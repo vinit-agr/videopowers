@@ -13,6 +13,10 @@ describe("slugify", () => {
     expect(slugify("BEAT 5 — Three passes in Remotion")).toBe("beat-5-three-passes-in-remotion");
     expect(slugify("Vinit's CLOSE!")).toBe("vinits-close");
   });
+  it("drops parenthesized timestamp runs from headings", () => {
+    expect(slugify("BEAT 2 (1:50–3:30) — Rough cut: a skill")).toBe("beat-2-rough-cut-a-skill");
+    expect(slugify("CLOSE (10:30–11:15) — the one-person studio")).toBe("close-the-one-person-studio");
+  });
   it("caps at 40 chars on a word boundary", () => {
     const s = slugify("a very long chapter title that keeps going and going and going");
     expect(s.length).toBeLessThanOrEqual(40);

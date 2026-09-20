@@ -1,8 +1,13 @@
 import type { ChapterInfo, Gap } from "./types.js";
 
-/** kebab-case a title into a code-safe id fragment, capped at 40 chars. */
+/**
+ * kebab-case a title into a code-safe id fragment, capped at 40 chars.
+ * Parenthesized runs are dropped first — script headings often carry planned
+ * timestamps like "BEAT 2 (1:50–3:30) — …" that don't belong in a stable id.
+ */
 export function slugify(title: string): string {
   const slug = title
+    .replace(/\([^)]*\)/g, " ")
     .toLowerCase()
     .replace(/[’‘']/g, "")
     .replace(/[^a-z0-9]+/g, "-")
