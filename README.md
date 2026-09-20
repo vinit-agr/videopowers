@@ -37,9 +37,13 @@ human in the edit bay.
 ## Install
 
 ```
-/plugin marketplace add <this-repo-or-local-path>
+/plugin marketplace add vinit-agr/videopowers
 /plugin install videopowers@videopowers
 ```
+
+> ⚠️ Work in progress: the skills below are being built in the open, one at a
+> time. A skill marked *planned* is a placeholder — installing the plugin is
+> safe, but placeholders announce themselves and stop when invoked.
 
 ## Layout of this repo
 
