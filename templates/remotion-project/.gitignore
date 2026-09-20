@@ -1,0 +1,4 @@
+node_modules/
+out/
+.DS_Store
+public/footage.mp4

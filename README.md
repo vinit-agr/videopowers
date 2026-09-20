@@ -25,7 +25,7 @@ idea ─► outline ─► script ─► packaging ─► record ─► rough cu
 | `script-writing` | pre-production | outline + voice reference → spoken-word manuscript for the human rewrite | planned |
 | `packaging-kit` | pre & post | titles, thumbnails, description, chapters — one promise, two phases | planned |
 | `footage-rough-cut` | edit | camera recordings + script → retake-cleaned rough cut on a Resolve timeline | planned |
-| `mg-setup` | motion graphics | final-cut MP4 + script → per-video Remotion project, beat sheet, word timestamps | planned |
+| `mg-setup` | motion graphics | final-cut MP4 + script → per-video Remotion project, beat sheet, word timestamps | **built** |
 | `mg-layout` | motion graphics | layout timeline (doc = source of truth) → placeholder composition for review | planned |
 | `mg-visuals` | motion graphics | placeholders → real graphics, chapter by chapter, per the design system | planned |
 | `mg-polish` | motion graphics | tightening + sound effects, in Remotion | planned |

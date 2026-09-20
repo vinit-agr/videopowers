@@ -1,0 +1,16 @@
+{
+  "name": "videopowers-mg-setup",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "mg:setup": "tsx scripts/cli.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}
