@@ -1,6 +1,6 @@
 import React from "react";
 import { Composition } from "remotion";
-import { Main } from "./Main";
+import { Main, mainSchema } from "./Main";
 import { VIDEO } from "./video.config";
 
 /**
@@ -14,6 +14,7 @@ export const Root: React.FC = () => {
       <Composition
         id="main"
         component={Main}
+        schema={mainSchema}
         fps={VIDEO.fps}
         width={VIDEO.width}
         height={VIDEO.height}
