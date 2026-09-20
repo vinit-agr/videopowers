@@ -1,0 +1,19 @@
+{
+  "name": "videopowers-mg-layout",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "layout": "tsx scripts/cli.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "yaml": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}
