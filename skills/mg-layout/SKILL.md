@@ -149,6 +149,24 @@ ch03-beat-2-rough-cut:            # chapter id from beat-sheet.json
 - Anchors must be verbatim spoken words. On "anchor not found," the error
   prints the transcript at the cursor — fix the anchor, don't fight it.
 
+## Face centering (recommended, once per video)
+
+The Split card and Bubble crop the footage; by default they center-crop. If
+the host isn't perfectly center-frame, measure the real face position and
+the runtime pans the crop to it:
+
+```bash
+cd <plugin>/skills/mg-layout
+python3 -m venv .venv && ./.venv/bin/pip install "opencv-python-headless<5"   # once (v5 dropped CascadeClassifier)
+./.venv/bin/python scripts/face_center.py <project>/remotion/public/footage.mp4 \
+  --out <project>/remotion/src/data/face.json
+```
+
+Samples ~15 frames, Haar frontal-face detection, writes the MEDIAN center —
+refuses to write if fewer than 3 frames had a face. FootageStage reads
+`src/data/face.json` (template default is a plain 0.5/0.5 center crop);
+uncropped layouts are never shifted.
+
 ## Run
 
 ```bash

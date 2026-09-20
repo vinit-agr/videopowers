@@ -1,7 +1,33 @@
 import React from "react";
 import { AbsoluteFill, Easing, interpolate, OffthreadVideo, staticFile, useCurrentFrame } from "remotion";
+import faceJson from "../data/face.json";
 import { SHOTS, type Shot } from "../layout/shots";
 import { contentBoxes, footageRect, FULLSCREEN, lerpRect, usesStage, type Rect } from "./geometry";
+
+/**
+ * Face center (normalized 0–1), measured by mg-layout's face_center.py.
+ * Cropped layouts (Split card, Bubble) pan the footage so this point sits at
+ * the container's center; 0.5/0.5 (the template default) is a plain center
+ * crop. Clamped so uncropped layouts (FullFace/Overlay) never shift.
+ */
+const FACE = {
+  x: typeof (faceJson as { x?: unknown }).x === "number" ? (faceJson as { x: number }).x : 0.5,
+  y: typeof (faceJson as { y?: unknown }).y === "number" ? (faceJson as { y: number }).y : 0.5,
+};
+
+/** Cover-fit the 16:9 footage in `rect`, panned to center FACE. */
+function coverOnFace(rect: Rect): { left: number; top: number; w: number; h: number } {
+  const scale = Math.max(rect.w / 1920, rect.h / 1080);
+  const w = 1920 * scale;
+  const h = 1080 * scale;
+  const clamp = (v: number, lo: number, hi: number) => Math.min(Math.max(v, lo), hi);
+  return {
+    left: clamp(rect.w / 2 - FACE.x * w, rect.w - w, 0),
+    top: clamp(rect.h / 2 - FACE.y * h, rect.h - h, 0),
+    w,
+    h,
+  };
+}
 
 /** Frames a layout transition takes (dock/undock, shrink/grow, fades). */
 const TRANSITION_FRAMES = 15;
@@ -43,6 +69,7 @@ export const FootageStage: React.FC = () => {
   );
   const rect = lerpRect(idx >= 0 ? footageRect(prev) : FULLSCREEN, footageRect(shot), t);
   const stage = usesStage(shot);
+  const fit = coverOnFace(rect);
 
   return (
     <AbsoluteFill style={{ backgroundColor: stage ? "#17181c" : "#000" }}>
@@ -61,7 +88,7 @@ export const FootageStage: React.FC = () => {
       >
         <OffthreadVideo
           src={staticFile("footage.mp4")}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          style={{ position: "absolute", left: fit.left, top: fit.top, width: fit.w, height: fit.h }}
         />
       </div>
       {shot.kind !== "FULLFACE"
