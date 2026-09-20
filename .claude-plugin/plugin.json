@@ -1,0 +1,17 @@
+{
+  "name": "videopowers",
+  "description": "A factory for making YouTube videos with Claude Code: skills for scripting, packaging, rough-cutting camera footage, and building motion graphics in Remotion.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Vinit Agrawal"
+  },
+  "license": "MIT",
+  "keywords": [
+    "video",
+    "youtube",
+    "remotion",
+    "davinci-resolve",
+    "motion-graphics",
+    "skills"
+  ]
+}

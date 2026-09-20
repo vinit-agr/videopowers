@@ -1,0 +1,17 @@
+{
+  "name": "videopowers",
+  "owner": {
+    "name": "Vinit Agrawal"
+  },
+  "metadata": {
+    "description": "Marketplace for the videopowers plugin — skills for making YouTube videos with Claude Code.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "videopowers",
+      "source": "./",
+      "description": "A factory for making YouTube videos with Claude Code: skills for scripting, packaging, rough-cutting camera footage, and building motion graphics in Remotion."
+    }
+  ]
+}
