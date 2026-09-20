@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Marketplace for the videopowers plugin — skills for making YouTube videos with Claude Code.",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "plugins": [
     {
