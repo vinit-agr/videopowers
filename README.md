@@ -24,7 +24,7 @@ idea ─► outline ─► script ─► packaging ─► record ─► rough cu
 | `outline-shaping` | pre-production | braindump → approved beat outline | planned |
 | `script-writing` | pre-production | outline + voice reference → spoken-word manuscript for the human rewrite | planned |
 | `packaging-kit` | pre & post | titles, thumbnails, description, chapters — one promise, two phases | planned |
-| `footage-rough-cut` | edit | camera recordings + script → retake-cleaned rough cut on a Resolve timeline | planned |
+| `footage-rough-cut` | edit | camera recordings + script → retake-cleaned rough cut on a Resolve timeline | **built** |
 | `mg-setup` | motion graphics | final-cut MP4 + script → per-video Remotion project, beat sheet, word timestamps | **built** |
 | `mg-layout` | motion graphics | layout timeline (doc = source of truth) → placeholder composition for review | **built** |
 | `mg-visuals` | motion graphics | placeholders → real graphics, chapter by chapter, per the design system | planned |

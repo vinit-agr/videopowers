@@ -1,6 +1,7 @@
-import { existsSync, readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { join } from "node:path";
 import { parseArgs } from "node:util";
+
+export { resolveApiKey } from "../../../scripts/shared/env.js";
 
 export const USAGE = `mg-setup — turn a final-cut MP4 + script.md into a per-video Remotion project.
 
@@ -37,44 +38,6 @@ export interface Config {
   skipInstall: boolean;
   cacheDir: string;
   apiKey: string | null;
-}
-
-function readEnvKey(file: string): string | null {
-  if (!existsSync(file)) return null;
-  for (const line of readFileSync(file, "utf8").split("\n")) {
-    const m = line.match(/^\s*ELEVENLABS_API_KEY\s*=\s*(.+)\s*$/);
-    if (m) return m[1]!.trim().replace(/^['"]|['"]$/g, "");
-  }
-  return null;
-}
-
-/**
- * Resolve the Scribe key: explicit flag → env var → .env files walking up
- * from the project dir (repo roots often hold the key), then the skill's own
- * .env.
- */
-export function resolveApiKey(explicit: string | null, projectDir: string, skillDir: string): string | null {
-  if (explicit) return explicit;
-  if (process.env.ELEVENLABS_API_KEY) return process.env.ELEVENLABS_API_KEY;
-
-  const candidates: string[] = [];
-  let dir = projectDir;
-  for (let i = 0; i < 8; i++) {
-    candidates.push(
-      join(dir, ".env"),
-      join(dir, "app", "feynman-lib", ".env"),
-      join(dir, "app", "studio", ".env"),
-    );
-    const parent = dirname(dir);
-    if (parent === dir) break;
-    dir = parent;
-  }
-  candidates.push(join(skillDir, ".env"));
-  for (const c of candidates) {
-    const key = readEnvKey(c);
-    if (key) return key;
-  }
-  return null;
 }
 
 export interface ParsedCli {
