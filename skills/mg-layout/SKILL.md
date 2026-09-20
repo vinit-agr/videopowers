@@ -16,7 +16,7 @@ the video. Design spec: `docs/specs/2026-09-20-mg-layout-design.md`.
 |---|---|---|
 | `[FULLFACE]` | face full screen, nothing else | 100% |
 | `[OVERLAY]` | face full screen; cards land in grid cells (default 4 and 6) | full (shared) |
-| `[SPLIT]` | face docked in a rounded card on one side; content fills the rest | graphics: 35% · media: **18%** |
+| `[SPLIT]` | face docked in a rounded **9:16 portrait card** on one side (full-height center-crop of the footage — the face fills the card, never a shrunken 16:9 frame); content fills the rest | graphics: 35% (caps ~29% at full height) · media: **18%** |
 | `[BUBBLE]` | face in a small circle (default cell 9) over near-full content | ~10% |
 | `[FULLGRAPHICS]` | content owns the screen; face hidden | 0% |
 

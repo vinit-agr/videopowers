@@ -33,9 +33,19 @@ export function footageRect(shot: Shot): Rect {
     case "OVERLAY":
       return FULLSCREEN;
     case "SPLIT": {
+      // The face card is a 9:16 PORTRAIT crop of the 16:9 footage, filling
+      // the card's full height — the container's objectFit:cover center-crops
+      // horizontally, which frames the face (the host sits mid-frame). Width
+      // comes from facePct, capped so the portrait card fits the stage
+      // (graphics default 35% caps to ~29% at full height; media 18% floats).
       const pct = (shot.facePct ?? 35) / 100;
-      const w = Math.round(STAGE_W * pct);
-      const h = Math.round((w * 9) / 16);
+      const maxH = STAGE_H - 2 * MARGIN;
+      let w = Math.round(STAGE_W * pct);
+      let h = Math.round((w * 16) / 9);
+      if (h > maxH) {
+        h = maxH;
+        w = Math.round((h * 9) / 16);
+      }
       const y = Math.round((STAGE_H - h) / 2);
       const x = shot.side === "right" ? STAGE_W - MARGIN - w : MARGIN;
       return { x, y, w, h, radius: 24, opacity: 1 };

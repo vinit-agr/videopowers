@@ -89,7 +89,11 @@ ch03-beat-2-rough-cut:
 ## Layout runtime (template addition, theme-free)
 
 `src/layouts/` in the Remotion template: `geometry.ts` (per-tag footage rect
-+ content boxes on the 3×3 grid, 1920×1080) and `FootageStage.tsx` (single
++ content boxes on the 3×3 grid, 1920×1080; the Split face card is a **9:16
+portrait center-crop** of the footage at full height — the harness-video
+technique — so the face fills the card instead of a shrunken 16:9 frame;
+future enhancement: face-detection to auto-offset the crop when the host
+isn't center-frame) and `FootageStage.tsx` (single
 component owning the footage element: finds the active shot per frame,
 interpolates geometry between shots ~0.5s eased — dock/undock, shrink/grow,
 fades — and renders placeholder panels / chapter cards in the content
