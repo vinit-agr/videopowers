@@ -4,14 +4,15 @@
     "name": "Vinit Agrawal"
   },
   "metadata": {
-    "description": "Marketplace for the videopowers plugin — skills for making YouTube videos with Claude Code.",
+    "description": "Marketplace for the videopowers plugin \u2014 skills for making YouTube videos with Claude Code.",
     "version": "0.5.0"
   },
   "plugins": [
     {
       "name": "videopowers",
       "source": "./",
-      "description": "A factory for making YouTube videos with Claude Code: skills for scripting, packaging, rough-cutting camera footage, and building motion graphics in Remotion."
+      "description": "A factory for making YouTube videos with Claude Code: skills for scripting, packaging, rough-cutting camera footage, and building motion graphics in Remotion.",
+      "version": "0.6.0"
     }
   ]
 }
