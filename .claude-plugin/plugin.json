@@ -1,7 +1,7 @@
 {
   "name": "videopowers",
   "description": "A factory for making YouTube videos with Claude Code: skills for scripting, packaging, rough-cutting camera footage, and building motion graphics in Remotion.",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "author": {
     "name": "Vinit Agrawal"
   },

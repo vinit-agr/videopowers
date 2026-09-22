@@ -27,6 +27,7 @@ idea ─► outline ─► script ─► packaging ─► record ─► rough cu
 | `footage-rough-cut` | edit | camera recordings + script → retake-cleaned rough cut on a Resolve timeline | **built** |
 | `mg-setup` | motion graphics | final-cut MP4 + script → per-video Remotion project, beat sheet, word timestamps | **built** |
 | `mg-layout` | motion graphics | layout timeline (doc = source of truth) → placeholder composition for review | **built** |
+| `mg-design` | motion graphics | look & feel → style package (design-system.md + tokens.ts), previewed as a probe reel on real footage in Studio | **built** |
 | `mg-visuals` | motion graphics | placeholders → real graphics, chapter by chapter, per the design system | planned |
 | `mg-polish` | motion graphics | tightening + sound effects, in Remotion | planned |
 | `mg-render` | delivery | machine-aware parallel chunk render with retry/recover, 4K stitch | planned |
