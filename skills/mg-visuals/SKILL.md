@@ -84,7 +84,11 @@ case/punctuation-insensitive).
 2. Wire the runtime (once per project):
    - Main.tsx: inside each chapter `<Sequence>`, replace the empty
      Fragment with the registry lookup:
-     `const G = CHAPTER_GRAPHICS[ch.id]; … {G ? <G /> : null}`
+     `const G = CHAPTER_GRAPHICS[ch.id]; … {G ? <G /> : null}` — and
+     EXTEND the Sequence to `durationInFrames + round(gapAfterSec*fps)`:
+     the chapter title-card shot lives in the black gap AFTER the
+     chapter, outside the original span. Chapter components use
+     `useAbsoluteFrame(chapterId)` (lib.ts) — anchors are absolute.
    - FootageStage: skip the placeholder when built —
      `contentBoxes(shot).map(…)` gains a
      `BUILT_SHOT_IDS.has(shot.id) ? null : <PlaceholderPanel …>` guard.

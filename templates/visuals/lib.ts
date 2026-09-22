@@ -1,7 +1,8 @@
 // videopowers:mg-visuals — helpers every chapter component uses, so agents
 // place graphics with the SAME geometry and timing feel as FootageStage
 // instead of reinventing either.
-import { Easing, interpolate } from "remotion";
+import { Easing, interpolate, useCurrentFrame } from "remotion";
+import { CHAPTERS, type Chapter } from "../chapters";
 import wordsJson from "../data/words.json";
 import { SHOTS, type Shot } from "../layout/shots";
 import { contentBoxes, type Rect } from "../layouts/geometry";
@@ -11,6 +12,21 @@ export type { Rect, Shot };
 
 /** Matches FootageStage's layout-transition length — enters feel native. */
 export const ENTER_FRAMES = 15;
+
+export function chapterById(id: string): Chapter {
+  const c = CHAPTERS.find((x) => x.id === id);
+  if (!c) throw new Error(`mg-visuals: unknown chapter id "${id}"`);
+  return c;
+}
+
+/**
+ * Absolute video frame inside a chapter component. Chapter graphics mount
+ * inside their chapter's <Sequence>, so useCurrentFrame() is local; every
+ * anchor in shots.ts/words.json is absolute — always compare in absolute.
+ */
+export function useAbsoluteFrame(chapterId: string): number {
+  return useCurrentFrame() + chapterById(chapterId).startFrame;
+}
 
 export function shotById(id: string): Shot {
   const s = SHOTS.find((x) => x.id === id);
