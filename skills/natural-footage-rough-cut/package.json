@@ -1,0 +1,17 @@
+{
+  "name": "natural-footage-rough-cut",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare:cut": "tsx scripts/cli.ts prepare",
+    "build:cut": "tsx scripts/cli.ts build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}

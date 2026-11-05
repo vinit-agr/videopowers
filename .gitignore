@@ -6,3 +6,4 @@ node_modules/
 out/
 .venv/
 skills/*/vendor/
+skills/*/.cache/

@@ -24,6 +24,9 @@ noise — the script's sentence/paragraph/beat structure decides the air).
 Without a script, only near-verbatim repeats can be caught, and every
 silence is collapsed uniformly by `--pacing`.
 
+Recorded improvised from prompt cards (`natural_script.md`) instead of read
+from `script.md`? Use `natural-footage-rough-cut`.
+
 ## Prerequisites
 
 - `ffmpeg` + `ffprobe` on PATH (`brew install ffmpeg`).

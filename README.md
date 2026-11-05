@@ -25,12 +25,26 @@ idea ─► outline ─► script ─► packaging ─► record ─► rough cu
 | `script-writing` | pre-production | outline + voice reference → spoken-word manuscript for the human rewrite | planned |
 | `packaging-kit` | pre & post | titles, thumbnails, description, chapters — one promise, two phases | planned |
 | `footage-rough-cut` | edit | camera recordings + script → retake-cleaned rough cut on a Resolve timeline | **built** |
+| `natural-footage-rough-cut` | edit | improvised recordings from prompt cards (`natural_script.md`) → finished rough cut, retakes found by meaning, with judgment-call markers + a review reel | **built** |
 | `mg-setup` | motion graphics | final-cut MP4 + script → per-video Remotion project, beat sheet, word timestamps | **built** |
 | `mg-layout` | motion graphics | layout timeline (doc = source of truth) → placeholder composition for review | **built** |
 | `mg-design` | motion graphics | look & feel → style package (design-system.md + tokens.ts), previewed as a probe reel on real footage in Studio | **built** |
 | `mg-visuals` | motion graphics | placeholders → real graphics, chapter by chapter, per the design system | planned |
 | `mg-polish` | motion graphics | tightening + sound effects, in Remotion | planned |
 | `mg-render` | delivery | machine-aware parallel chunk render with retry/recover, 4K stitch | planned |
+
+### Two rough-cut skills: pick by how you recorded
+
+- **Read word for word from `script.md`** → `footage-rough-cut`. Code aligns
+  every take to the script's sentences and drops retakes keep-last.
+- **Improvised from prompt cards in `natural_script.md`** (sections → cards →
+  free bullets + `> 🔒` fixed lines you say nearly verbatim) → `natural-footage-rough-cut`.
+  The words on camera match no script, so Claude Code is the editor, in three steps:
+  `prepare` (transcribe, write `transcript.md` with restart/cut-off hints) →
+  Claude writes `edit.json` (which attempt of each thought to keep) →
+  `build` (MP4, Resolve XML with yellow "Call N" markers, a review reel of the
+  alternatives for each judgment call, and a report that leads with any
+  🔒 line never said). Natural pauses are kept; only dead air is shortened.
 
 The final cut is deliberately **not** a skill — pacing decisions belong to a
 human in the edit bay.
