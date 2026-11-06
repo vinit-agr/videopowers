@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thumbnail mockups</title>
+<!--
+  Thumbnail mockups for one plan (packaging v1). Self-contained: no fonts, images or scripts from outside.
+  Copy one <section class="thumb"> per picked idea; id = the idea's id, so a plan can link thumbnails.html#8.
+  Each section shows the 1280x720 frame at 40% size, then the same frame at 168x94 (the small-size check).
+  Edit only the parts marked EDIT. Colours: change --bg / --ink / --accent per section if a concept needs it.
+-->
+<style>
+  :root { --page: #f4f4f2; --text: #1d1d1f; --muted: #6b6b70; }
+  @media (prefers-color-scheme: dark) { :root { --page: #161618; --text: #ececec; --muted: #9a9aa0; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px 16px 64px; background: var(--page); color: var(--text);
+         font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .lede { color: var(--muted); margin: 0 0 28px; }
+  .thumb { --bg: #0f2a43; --ink: #ffffff; --accent: #ffcc00; margin: 0 0 40px; }
+  .row { display: flex; gap: 24px; align-items: flex-end; flex-wrap: wrap; }
+  /* The real frame is 1280x720; the wrapper shows it at 40% (512x288). */
+  .scale { width: 512px; height: 288px; max-width: 100%; overflow: hidden; border-radius: 8px; }
+  .small { width: 168px; height: 94px; overflow: hidden; border-radius: 4px; }
+  .frame { width: 1280px; height: 720px; transform-origin: 0 0; position: relative; overflow: hidden;
+           background: var(--bg); color: var(--ink); font-family: Impact, "Arial Black", "Helvetica Neue", sans-serif; }
+  .scale .frame { transform: scale(0.4); }
+  .small .frame { transform: scale(0.13125); }
+  .speaker { position: absolute; right: 40px; bottom: 0; width: 520px; height: 640px; }
+  .speaker svg { width: 100%; height: 100%; }
+  .emotion { position: absolute; right: 120px; bottom: 24px; font: 700 34px/1 -apple-system, Helvetica, Arial, sans-serif;
+             background: rgba(0,0,0,.55); color: #fff; padding: 8px 16px; border-radius: 8px; }
+  .words { position: absolute; left: 64px; top: 72px; width: 640px; font-size: 128px; line-height: 1.0;
+           text-transform: uppercase; letter-spacing: 1px; }
+  .words em { font-style: normal; color: var(--accent); }
+  .visual { position: absolute; left: 64px; bottom: 72px; width: 560px; height: 220px; border: 6px dashed var(--accent);
+            border-radius: 18px; display: flex; align-items: center; justify-content: center; text-align: center;
+            font: 700 40px/1.15 -apple-system, Helvetica, Arial, sans-serif; padding: 16px; }
+  .caption { margin-top: 10px; max-width: 720px; }
+  .caption b { font-size: 16px; }
+  .caption .meta { color: var(--muted); }
+  @media (max-width: 600px) { .scale { width: 100%; height: auto; aspect-ratio: 16 / 9; } }
+</style>
+</head>
+<body>
+<h1>Thumbnail mockups</h1>
+<p class="lede">EDIT: plan name and date. Each mockup at 40% size, then at 168×94 to check it reads small.</p>
+
+<!-- ===== One section per picked idea. Copy from here… ===== -->
+<section class="thumb" id="8">
+  <div class="row">
+    <div class="scale"><div class="frame">
+      <div class="words">Friday, <em>5 pm</em></div>                                   <!-- EDIT: 2–4 words -->
+      <div class="visual">Three phones: paper · spreadsheet · app</div>                <!-- EDIT: one visual element -->
+      <div class="speaker">
+        <svg viewBox="0 0 200 240" aria-hidden="true">
+          <circle cx="100" cy="70" r="46" fill="rgba(255,255,255,.28)"/>
+          <path d="M20 240 C20 160 60 130 100 130 C140 130 180 160 180 240 Z" fill="rgba(255,255,255,.28)"/>
+        </svg>
+      </div>
+      <div class="emotion">Speaker: stressed</div>                                       <!-- EDIT: emotion, or "no face: <reason>" -->
+    </div></div>
+    <div class="small"><div class="frame">
+      <div class="words">Friday, <em>5 pm</em></div>
+      <div class="visual">Three phones: paper · spreadsheet · app</div>
+      <div class="speaker">
+        <svg viewBox="0 0 200 240" aria-hidden="true">
+          <circle cx="100" cy="70" r="46" fill="rgba(255,255,255,.28)"/>
+          <path d="M20 240 C20 160 60 130 100 130 C140 130 180 160 180 240 Z" fill="rgba(255,255,255,.28)"/>
+        </svg>
+      </div>
+    </div></div>
+  </div>
+  <div class="caption">
+    <b>8. Paper, spreadsheet or an app: which schedule survives a Friday night?</b>              <!-- EDIT: id and title -->
+    <div class="meta">Concept: a stressed manager beside three phones; the words add the moment the title leaves out.</div>  <!-- EDIT -->
+  </div>
+</section>
+<!-- ===== …to here. ===== -->
+
+</body>
+</html>
