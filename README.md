@@ -11,19 +11,20 @@ pipeline so it can be repeated video after video.
 ## The pipeline
 
 ```
-idea ─► outline ─► script ─► packaging ─► record ─► rough cut ─► FINAL CUT (you, in Resolve)
-                                                                      │
-              render ◄─ polish ◄─ visuals ◄─ layout ◄─ setup ◄────────┘
-                                (motion graphics, in Remotion)
+ideation ─► research + outline ─► script ─► record ─► rough cut ─► FINAL CUT (you, in Resolve) ─► packaging (late)
+(+ packaging v1)  (gate 1: Approved)  (gate 2: Locked)                     │
+                         render ◄─ polish ◄─ visuals ◄─ layout ◄─ setup ◄──┘
+                                   (motion graphics, in Remotion)
 ```
 
 ## Skills
 
 | Skill | Stage | Responsibility | Status |
 |---|---|---|---|
-| `outline-shaping` | pre-production | braindump → approved beat outline | planned |
-| `script-writing` | pre-production | outline + voice reference → spoken-word manuscript for the human rewrite | planned |
-| `packaging-kit` | pre & post | titles, thumbnails, description, chapters — one promise, two phases | planned |
+| `content-ideation` | pre-production | plan a month or the next video, test one idea, review a plan; packaging v1 (overview, titles, first line, thumbnail concept + HTML mockup) with a Reach / Sales score | **built** |
+| `research-and-outline` | pre-production | planned idea → research (desk, your own study behind a criteria gate, or conversation prep) + an approved one-page story outline with stand-alone chapters | **built** |
+| `script-writing` | pre-production | approved outline + craft, niche and speaker layers → a `script.md` to read on camera without edits; learns from the speaker's edits | **built** |
+| `packaging-kit` | post | late packaging: chapters with timestamps and the final description (early packaging lives in content-ideation) | planned |
 | `footage-rough-cut` | edit | camera recordings + script → retake-cleaned rough cut on a Resolve timeline | **built** |
 | `natural-footage-rough-cut` | edit | improvised recordings from prompt cards (`natural_script.md`) → finished rough cut, retakes found by meaning, with judgment-call markers + a review reel | **built** |
 | `mg-setup` | motion graphics | final-cut MP4 + script → per-video Remotion project, beat sheet, word timestamps | **built** |
@@ -32,6 +33,20 @@ idea ─► outline ─► script ─► packaging ─► record ─► rough cu
 | `mg-visuals` | motion graphics | placeholders → real graphics, chapter by chapter, per the design system | planned |
 | `mg-polish` | motion graphics | tightening + sound effects, in Remotion | planned |
 | `mg-render` | delivery | machine-aware parallel chunk render with retry/recover, 4K stitch | planned |
+
+### The content workspace
+
+The plugin holds only the method. Everything about one company (its
+profile, approved proof, buyers' words, speakers, framework and the list of
+every video and idea) lives in that company's own repo, in a folder marked
+by a `videopowers.md` file. The three pre-production skills find it, read
+it and keep it up to date; the first run offers a short setup interview that
+builds it from whatever you already have. Formats:
+`skills/content-ideation/references/workspace.md`.
+
+Worked example: Tars, which makes chat and voice AI agents for behavioral
+health providers, plans, outlines and scripts its videos this way from its
+own private workspace.
 
 ### Two rough-cut skills: pick by how you recorded
 

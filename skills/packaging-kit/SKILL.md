@@ -1,6 +1,6 @@
 ---
 name: packaging-kit
-description: "IN DEVELOPMENT — not built yet; if invoked, tell the user this skill is still under development and stop. Will produce the video's packaging as one coherent promise: titles, thumbnail concepts, and description early from the script; final chapters and locked description late from real timestamps. One skill, two phases, detected from what exists on disk."
+description: "IN DEVELOPMENT — not built yet; if invoked, tell the user this skill is still under development and stop. Will produce the late packaging after recording: chapters with timestamps and the final description. Early packaging (titles, first line, thumbnail concept and mockup) now lives in content-ideation and is refreshed in research-and-outline."
 ---
 
 # packaging-kit — placeholder
@@ -10,14 +10,14 @@ the user this skill is not built yet and stop — do not improvise the workflow.
 
 ## Planned responsibility
 
-Packaging as a single unit (a title and a thumbnail made separately stop
-agreeing with each other):
+Packaging as a single promise (a title and a thumbnail made separately stop
+agreeing with each other), finished after the edit:
 
-- **Early phase** (script exists): A/B title candidates, thumbnail concepts,
-  description draft.
-- **Late phase** (beat sheet / timestamps exist): chapter list in
-  `timestamp - title` form aligned to the chapter markers, description
-  finalized.
-
-The phase is detected from what exists on disk; both phases keep the same
-promise consistent across title, thumbnail, description, and chapters.
+- **Early packaging is already done** by the time this runs: content-ideation
+  writes it into the video folder's `packaging.md` (overview, titles, first
+  line, thumbnail concept and mockup) when the idea is kept, and
+  research-and-outline refreshes it when the story moves.
+- **Late phase** (beat sheet / timestamps exist): reads `packaging.md`, adds
+  the chapter list in `timestamp - title` form aligned to the chapter
+  markers, and finalizes the description, keeping the same promise across
+  title, thumbnail, description and chapters.
