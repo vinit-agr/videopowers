@@ -24,7 +24,8 @@ All paths inside `videopowers.md` are relative to the folder that holds it.
 
 The workspace's front page. It says where each file lives, so a company can
 keep its existing layout. The template is
-`templates/videopowers.template.md`.
+`templates/videopowers.template.md`. An example that keeps the company's
+files in a `brain/` folder:
 
 ```markdown
 # videopowers workspace
@@ -47,8 +48,9 @@ keep its existing layout. The template is
 - recording method: short takes    # or: teleprompter
 ```
 
-A missing entry falls back to the value shown above. A missing default
-speaker means: ask.
+A missing entry falls back to the template's value: the file of that name
+at the top of the workspace (`profile.md`, `registry.md`, …), 170 words per
+minute, `short takes`. A missing default speaker means: ask.
 
 **Recording method** sets script paragraph length: `short takes` (the
 speaker reads a sentence or two from the screen, then says it to camera)
@@ -69,8 +71,8 @@ speaker reads a sentence or two from the screen, then says it to camera)
   to the idea log. It never changes or deletes existing rows.
 - **Human edits always win.** Re-read a file from disk right before writing
   it, and change only the rows or lines you mean to change.
-- A **new** idea-log entry is one dated after the last plan in `plans/`
-  (every entry, if there is no plan yet) and not already in the registry.
+- A **new** idea-log entry is one dated after the `Made` date in the newest
+  plan's header in `plans/` (every entry, if there is no plan yet) and not already in the registry.
   Match by meaning, not exact words.
 
 ## Approval words and status sync
@@ -156,7 +158,7 @@ what's missing. Template: `templates/registry.md`. The header row is exactly:
 |---|---|---|
 | `idea` | A candidate | content-ideation, setup |
 | `proposed` | In a plan the human hasn't reviewed | content-ideation (plan) |
-| `planned` | Kept by the human | content-ideation (review) |
+| `planned` | Kept by the human | content-ideation (review); research-and-outline (part 2 of a split) |
 | `researching` | Research or a study is under way; the note says the step | research-and-outline |
 | `outlined` | An outline draft exists | research-and-outline |
 | `approved` | Gate 1 passed | status sync |

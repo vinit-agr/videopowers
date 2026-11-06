@@ -32,7 +32,15 @@ list.
 ## Before anything
 
 For *Write*, in this order (for *Rework*, steps 1–3 and 5; for *Learn* and
-*Speaker setup*, steps 1–2):
+*Speaker setup*, steps 1–2). First, what the video's status asks for:
+
+| Status | Do |
+|---|---|
+| `approved` | *Write* |
+| `scripted` | *Rework* (never write over the speaker's `script.md` or `script.generated.md`) |
+| `locked` or later | Stop: say it's locked; a change needs *Rework*, step 1 |
+| earlier than `approved` | Stop: the outline comes first (research-and-outline) |
+
 1. Find the workspace: `../content-ideation/references/workspace.md`,
    *Finding the workspace*. None → offer its *Setup*.
 2. Status sync (same file).
@@ -52,8 +60,9 @@ For *Write*, in this order (for *Rework*, steps 1–3 and 5; for *Learn* and
 
 ## Write
 
-1. Load the three layers, plus the profile's *Approved proof*, *Never
-   claim* and *Compliance rules*.
+1. Load the three layers, the outline and `research.md` (for context only;
+   the outline decides what's said), plus the profile's *Approved proof*,
+   *Never claim* and *Compliance rules*.
 2. **Draft beat by beat**, following the outline: one `## ` beat for the
    hook, each chapter and the close, with the outline's word budgets, mini
    hooks and numbers. Format: `references/script-format.md`.
@@ -83,7 +92,11 @@ For *Write*, in this order (for *Rework*, steps 1–3 and 5; for *Learn* and
 ## Rework
 
 The speaker has edited `script.md` and asks for a change ("the close is too
-long").
+long"). First: a change to numbers, claims or chapters isn't a rework; it
+goes back to the outline (research-and-outline, gate 1). A locked script:
+ask first; if yes, remove the `Locked` line, say so, and set the registry
+back to `scripted`.
+
 1. Read `script.md` from disk. Save it as `script-rounds/<NN>-speaker.md`
    (NN = the next round number) **before touching anything**.
 2. Change only what was asked, on top of their version. Every other edit of
@@ -92,10 +105,6 @@ long").
    can't be met inside it), and update the header line. A marker the
    speaker removed is their call: mention it, don't restore it.
 4. Save the result as `script.md` and `script-rounds/<NN>-claude.md`.
-5. A change to numbers, claims or chapters isn't a rework: it goes back to
-   the outline (research-and-outline, gate 1).
-6. A locked script: ask first. If yes, remove the `Locked` line, say so, and
-   set the registry back to `scripted`.
 
 ## Lock
 
@@ -104,8 +113,8 @@ to `locked` only if no open marker is left; otherwise it stays `scripted`,
 and you name each remaining marker.
 
 When it locks, read what replaced each marker and report, without editing:
-a new number (add it to *Numbers and sources* with the speaker as its
-source, if they agree), an open loop still unpaid, a line repeated, a
+a new number (propose adding it to *Numbers and sources* with the speaker
+as its source; edit only if they agree, then re-check the lock), an open loop still unpaid, a line repeated, a
 broken parser rule. The human's `Locked` stands; you only report.
 
 ## Learn

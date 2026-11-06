@@ -1,6 +1,6 @@
 # Plan: <period, e.g. December 2026>
 
-Made <YYYY-MM-DD> by content-ideation · N = <n> · already made or planned in the period: <M> · thumbnails: `<YYYY-MM>-thumbnails.html`
+Made <YYYY-MM-DD> by content-ideation · N = <n> · already made or planned in the period: <M> · thumbnails: `<plan-name>-thumbnails.html`
 
 **How N and the slots were worked out:** <the reading of the request; M; need per bucket; the result. Any cadence clash.>
 

@@ -142,7 +142,8 @@ business; "this is the problem" stays firm.
 - Check: *Is any claim about the viewer's own business stated as certain?*
 
 **22. Gentle words for sensitive topics.** Use the softer phrase when it's
-just as clear ("hurting themselves", "a serious illness").
+just as clear ("lost their job", not "got fired"; "had to close", not
+"went bust").
 - Check: *Any harsh word where a gentler, equally clear one exists?*
 
 **23. The speaker's own life is theirs to write.** Their self-introduction,

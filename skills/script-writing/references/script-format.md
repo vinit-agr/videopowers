@@ -67,10 +67,11 @@ it. Its length follows the workspace's `recording method`:
 The parser can't warn you, so these are rules:
 
 1. The label is exactly `**Say:**`: bold, colon inside. `**Say**:` or a bare
-   `Say:` isn't a label, and that whole beat disappears.
+   `Say:` isn't a label: as a beat's only label, the whole beat disappears;
+   after a real Say block, it's spoken aloud as "Say: …".
 2. A line inside a Say block never starts with a bold word and colon
    (`**First:**`, `**Note:**`). The parser reads that as a new block, and
-   drops everything after it from the spoken text.
+   drops everything from there to the next `**Say:**` line.
 3. Spoken text runs until the next `**Label:**` line, `#` or `##` heading, or
    a `---` line. So anything that isn't spoken (a staging note, a table, a
    list) goes after a `**Show:**` or `**Note:**` line, never loose inside a

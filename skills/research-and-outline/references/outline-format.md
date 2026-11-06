@@ -119,4 +119,6 @@ When the story has more than about three big ideas, or won't fit the length
 range: propose two videos. Each gets its own outline with its own promise
 and reward; part 1 must be worth watching alone. In the registry, the
 current row becomes part 1; part 2 gets a new row (`planned`, the next free
-video number, a note "part 2 of <id>"). Ask the human before splitting.
+video number, a note "part 2 of <id>") and its own folder, with a copy of
+`packaging.md` retitled for part 2 and a `## Changes` line. Ask the human
+before splitting.

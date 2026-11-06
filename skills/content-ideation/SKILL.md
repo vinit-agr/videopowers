@@ -91,12 +91,13 @@ nothing; offer to add it as an `idea` row.
 
 The user replies per idea: keep, change (with what) or drop (with why).
 
-- **Keep** and **change** → `planned`. For a change, apply it to the block
-  first and log it in `## Changes`.
-- For each kept idea, create `videos/<NN>-<slug>/` with `packaging.md`
-  (`templates/packaging.md`: the whole block, the thumbnail concept, and a
-  first `## Changes` line) and `thumbnail.html` (its mockup section, in a
-  copy of the template).
+- **Keep** and **change** → `planned`. For each, create
+  `videos/<NN>-<slug>/` and set the registry `folder` cell. In it:
+  `packaging.md` (`templates/packaging.md`: the whole block, the thumbnail
+  concept, and a first `## Changes` line) and `thumbnail.html` (its mockup
+  section, in a copy of the template).
+- For a **change**, then apply it to that `packaging.md` (and the plan's
+  block, and the mockup if the title moved) and log it in `## Changes`.
 - A kept idea that needs **its own study** → say so, and offer to start
   research-and-outline now, so the study's criteria gate doesn't wait.
 - **Drop** → `dropped`, with the reason appended to `note`. The id is never

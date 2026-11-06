@@ -17,8 +17,8 @@ It joins three methods, each with one job:
 One sentence every video supports, so many videos add up to one thing the
 company stands for. It's about the viewer's world, not the product. A good
 belief is something a buyer could agree with before they've heard of you.
-
-Belief: <one sentence, or "not yet">
+It lives in the profile (`profile.md`, *Belief*); the gate below checks
+every idea against it.
 
 ## Every video has two jobs
 

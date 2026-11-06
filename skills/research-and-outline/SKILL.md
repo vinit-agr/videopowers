@@ -41,8 +41,8 @@ storyteller who refuses to make anything complicated.
 ## Resuming
 
 Research and studies can take days. Read the registry note and the files in
-the folder, and continue from the first missing piece: no `study/` files →
-start the gate; criteria not approved → stop again and ask; no
+the folder, and continue from the first missing piece. For a video built on
+your own study: no `study/` files → start the gate; criteria not approved → stop again and ask; no
 `results.md` → collect; no `outline.md` → write it; an outline exists →
 revise it per the human's comments.
 
@@ -50,7 +50,9 @@ revise it per the human's comments.
 
 1. **A first guess at the story, in one breath,** in the shape for its
    awareness step (framework.md, *The ladder and the buckets*). Write it at
-   the top of `research.md` (or of `study/method.md` for a study). No invented
+   the top of `research.md` (or of `study/method.md` for a study). With no
+   research at all, it goes straight into the outline's *The story in one
+   breath*. No invented
    contrarian take: if there's no real "actually", don't fake one.
 2. **Choose the kind of research:** desk, your own study, conversation prep,
    or none (`references/research-kinds.md`). "Research needed" in
@@ -79,6 +81,12 @@ revise it per the human's comments.
 
 When done, tell the human: the story in one breath, the surprise, the
 length, and the open ⚠ items they need to answer.
+
+## Later (not in v1)
+
+- **Atomization:** cutting the chapters marked "stands alone: yes" into
+  clips, posts and carousels.
+- **A firmer hook framework**, grown from what works on published videos.
 
 ## Common mistakes
 

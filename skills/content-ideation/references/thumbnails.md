@@ -31,7 +31,7 @@ B2B-specific advice is mostly rules of thumb.
    160–215 px wide (desktop sidebar, TV rows, end screens). Shrink the
    design to that size and check that the subject and every word still read.
 7. **The niche's own word is a filter, not jargon.** A word the buyers use
-   every day ("tip pool", "intake") tells the right viewer "this is for
+   every day ("tip pool", "chargeback") tells the right viewer "this is for
    me". A term only insiders of your company use doesn't.
 8. **Stay consistent across the channel**: similar colours and layout help
    returning viewers recognise you.

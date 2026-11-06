@@ -26,8 +26,8 @@ The structure must leave room for that (see §8, "Later").
 
 **Ideation is the slow, key step.** Vinit's words: "This is the main and key
 work I have to do… coming up with the idea for the long-form pillar video
-content and making sure the script is good." The target is 10 pillar videos
-in November 2026 and about 18 in December (2 → 3 → 5 a week).
+content and making sure the script is good." The plan is to publish more
+pillar videos each week over the coming months.
 
 **What went wrong so far (videos 1–6):**
 - The thinking that chose and shaped ideas lived in chat sessions and loose
@@ -124,8 +124,8 @@ so the skills work with an **existing** repo layout without moving files:
 - videos: videos/          # one folder per video: videos/<NN>-<slug>/
 
 ## Defaults
-- default speaker: vinit
-- cadence: 2 a week until 2026-11-13, then 3 a week
+- default speaker: <name>
+- cadence: 2 a week until <date>, then 3 a week
 - words per minute: 170
 ```
 
@@ -215,7 +215,7 @@ exists and what's missing.
 | speaker | Who is on camera (a `speakers/` file name); empty = the default speaker |
 | score | Total, e.g. `10` |
 | planned for | Week or date |
-| folder | `videos/07-chat-questions/` |
+| folder | `videos/07-job-ads-study/` |
 | note | One line (e.g. drop reason) |
 
 Skills update the status as they run. A human edit always wins.
@@ -334,14 +334,14 @@ first a table of all N ranked by score, with bucket, product and week; then
 one block per idea:
 
 ```markdown
-### 8. Contact form, live chat, chatbot or chat AI agent?   ·   score 12
+### 8. <title>   ·   score 12
 **Overview.** (3–5 sentences: the story, who it's for, the moment, what they
 can do after watching.)
 **Title:** … (plus 1–2 alternates)
 **First line:** "…"
 **Thumbnail:** concept in one line → mockup in thumbnails.html#8
-**Tags:** options / step 3 · versus · chat · marketing + admissions, at a
-website redesign · send to: … · next step: …
+**Tags:** options / step 3 · versus · <product> · <role>, at <moment> ·
+send to: … · next step: …
 **Score:** Total 12 · Reach 7 · Sales 7 · leans: both
 Pain 2 (…) · Only us 2 (…) · Click 3 (…) · Sales use 3 (…) · Cost 2 (…)
 **Research needed:** none / light / days, and what kind
@@ -660,8 +660,8 @@ to it.
 **Tars's own workspace** (not in this repo): after the skills are built,
 run setup in the content folder of the Tars repo. It points at the
 existing files (the voice notes, the idea log, the video folders and the
-framework document) and builds the registry from videos
-1–9 and the hand-made November plan. That's the first test.
+framework document) and builds the registry from the
+existing videos and plans. That's the first test.
 
 ## 8. Later (keep in mind, don't build now)
 
