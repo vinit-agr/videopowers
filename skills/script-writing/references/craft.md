@@ -66,8 +66,8 @@ viewer the video is for them. After that, a shorter form is fine.
 
 **9. Talk to the viewer as "you"; the people they serve are third person.**
 Never make the viewer play their own customer.
-- Before: "Imagine you're a patient searching at night…" (to an audience of clinic owners)
-- After: "Imagine one of your patients searching at night. She finds your website…"
+- Before: "Imagine you're hungry at 9 pm and looking for a table…" (to an audience of restaurant owners)
+- After: "Imagine one of your guests looking for a table at 9 pm. She finds your website…"
 - Check: *Is "you" always the viewer, in their own role?*
 
 ## Numbers
