@@ -1,7 +1,7 @@
 // project.ts — orchestrate PROJECT mode: many part recordings + script.md →
 // aligned, retake-cleaned, script-paced rough cut → XML / MP4 / Resolve.
 
-import { existsSync, mkdirSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { spawn } from "node:child_process";
 import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -12,7 +12,7 @@ import { toPhrases } from "./phrases.js";
 import { removeFillers } from "./fillers.js";
 import { trimRestart } from "./retakes.js";
 import { loadScript } from "./script.js";
-import { alignToScript, type SourcePhrase } from "./align.js";
+import { alignToScript, DEFAULT_ALIGN_OPTIONS, type SourcePhrase } from "./align.js";
 import { buildCut } from "./cut.js";
 import { placeSegments, writeFcpXml } from "./xml.js";
 import { renderPlan } from "./render.js";
@@ -98,7 +98,40 @@ export async function runProject(config: Config, apiKey: string): Promise<void> 
   }
 
   // --- script alignment + retakes ---
-  const align = alignToScript(sourcePhrases, script);
+  const align = alignToScript(sourcePhrases, script, {
+    ...DEFAULT_ALIGN_OPTIONS,
+    killerMinSim: config.retakeMinSim ?? DEFAULT_ALIGN_OPTIONS.killerMinSim,
+  });
+  // Editor overrides: <out-dir>/drops.json is a list of phrase ids
+  // ("part3@18.92" = the phrase starting at 18.92s in part3.mp4, as printed by
+  // --dry-run) to drop on top of the automatic retake decisions. Applied
+  // before the cut so the joins around a dropped phrase are still paced.
+  const dropsPath = join(outDir, "drops.json");
+  if (existsSync(dropsPath)) {
+    const ids = JSON.parse(readFileSync(dropsPath, "utf8")) as string[];
+    let applied = 0;
+    for (const id of ids) {
+      const m = /^(.+)@(\d+(?:\.\d+)?)$/.exec(id);
+      const hit = m
+        ? align.phrases.find(
+            (p) =>
+              basename(parts[p.part]!.path, ".mp4") === m[1] &&
+              Math.abs(p.phrase.start - Number(m[2])) < 0.06,
+          )
+        : undefined;
+      if (!hit) {
+        console.error(`  ⚠ drops.json: no phrase matches "${id}"`);
+        continue;
+      }
+      if (!hit.dropped) {
+        hit.dropped = true;
+        hit.dropReason = "editor drop (drops.json)";
+        applied++;
+      }
+    }
+    align.kept = align.kept.filter((p) => !p.dropped);
+    console.error(`  drops.json: ${applied}/${ids.length} editor drops applied`);
+  }
   for (const p of align.phrases) {
     if (p.dropped) droppedByPart[p.part]!.push({ start: p.phrase.start, end: p.phrase.end });
   }
@@ -173,6 +206,12 @@ export async function runProject(config: Config, apiKey: string): Promise<void> 
         );
         cursor += seg.end - seg.start;
       }
+    }
+    console.error(`\nkept phrases (ids for drops.json):`);
+    for (const p of align.kept) {
+      const id = `${basename(parts[p.part]!.path, ".mp4")}@${p.phrase.start.toFixed(2)}`;
+      const where = p.span ? `s${p.span[0]}${p.span[1] !== p.span[0] ? `-${p.span[1]}` : ""}` : "ad-lib";
+      console.error(`  ${id.padEnd(14)} ${where.padEnd(8)} ${p.phrase.text}`);
     }
     console.error(`\n[dry-run] no files written.`);
     return;

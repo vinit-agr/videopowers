@@ -146,6 +146,7 @@ async function main(): Promise<void> {
     await run(config);
   } catch (e) {
     console.error(`\nerror: ${(e as Error).message}`);
+    if (process.env.DEBUG) console.error((e as Error).stack);
     process.exitCode = 1;
   }
 }

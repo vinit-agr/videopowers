@@ -53,7 +53,11 @@ export interface Edl {
 }
 
 export type Pacing = "tight" | "medium" | "loose";
-export type Quality = "native" | "1080p";
+export type Quality = "native" | "1080p" | "720p" | "480p";
+/** Target height for a downscaling quality; null = keep source resolution. */
+export function qualityHeight(q: Quality): number | null {
+  return q === "native" ? null : Number.parseInt(q, 10);
+}
 export type FillerMode = "safe" | "aggressive";
 export type Take = "last";
 
@@ -96,6 +100,8 @@ export interface Config {
   outDir: string | null;
   seqName: string | null;
   budgets: PauseBudgets;
+  /** Project mode: min script similarity a later take needs to supersede an earlier one (null = align default). */
+  retakeMinSim: number | null;
 }
 
 // ---------------------------------------------------------------------------

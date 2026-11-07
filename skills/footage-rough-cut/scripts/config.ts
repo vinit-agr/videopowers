@@ -30,6 +30,9 @@ PROJECT MODE (input is a project directory):
   --sentence-pause <s>       Air between sentences (default: preset; medium 0.15)
   --concept-pause <s>        Air between paragraphs/concepts (default: preset; medium 0.35)
   --beat-gap <s>             Black gap between beats (default: preset; medium 2.0)
+  --retake-min-sim <0-1>     Script similarity a later take needs to supersede an
+                             earlier one (default 0.75; lower for heavily
+                             paraphrased shoots — containment still guards content)
 
 SINGLE-FILE MODE (input is a media file — the original voice-cleanup):
   tsx scripts/cli.ts <input.mp4> [options]
@@ -41,7 +44,7 @@ COMMON:
   --no-remove-fillers        Keep filler words
   --filler-mode <m>          safe | aggressive (default: safe)
   --filler-words "a,b,c"     Override the edge-filler list
-  --quality <q>              native | 1080p (default: native)
+  --quality <q>              native | 1080p | 720p | 480p — downscale only (default: native)
   --crf <n>                  libx264 CRF (default: 18)
   --preset <p>               libx264 preset (default: medium)
   --no-normalize             Skip -14 LUFS loudness normalization
@@ -62,7 +65,7 @@ export function resolveApiKey(explicit: string | null, startPath?: string): stri
 }
 
 const PACINGS = new Set(["tight", "medium", "loose"]);
-const QUALITIES = new Set(["native", "1080p"]);
+const QUALITIES = new Set(["native", "1080p", "720p", "480p"]);
 const MODES = new Set(["safe", "aggressive"]);
 const OUTPUTS = new Set(["xml", "mp4", "resolve"]);
 
@@ -121,6 +124,7 @@ export function parseCliConfig(argv: string[]): ParsedCli {
         "sentence-pause": { type: "string" },
         "concept-pause": { type: "string" },
         "beat-gap": { type: "string" },
+        "retake-min-sim": { type: "string" },
         help: { type: "boolean", short: "h" },
       },
     });
@@ -143,7 +147,7 @@ export function parseCliConfig(argv: string[]): ParsedCli {
   const pausePreset = (str(raw["pause-preset"]) ?? "medium") as Pacing;
   if (str(raw.pacing) && !PACINGS.has(pacing)) return err(`--pacing must be tight|medium|loose`);
   if (str(raw["pause-preset"]) && !PACINGS.has(pausePreset)) return err(`--pause-preset must be tight|medium|loose`);
-  if (str(raw.quality) && !QUALITIES.has(quality)) return err(`--quality must be native|1080p`);
+  if (str(raw.quality) && !QUALITIES.has(quality)) return err(`--quality must be native|1080p|720p|480p`);
   if (str(raw["filler-mode"]) && !MODES.has(fillerMode)) return err(`--filler-mode must be safe|aggressive`);
   if (take && take !== "last") return err(`--take "best" is not available in v1; use --take last`);
 
@@ -158,7 +162,9 @@ export function parseCliConfig(argv: string[]): ParsedCli {
   const sp = num(str(raw["sentence-pause"]), "--sentence-pause");
   const cp = num(str(raw["concept-pause"]), "--concept-pause");
   const bg = num(str(raw["beat-gap"]), "--beat-gap");
-  for (const v of [sp, cp, bg]) if (v && typeof v === "object") return err(v.err);
+  const rms = num(str(raw["retake-min-sim"]), "--retake-min-sim");
+  for (const v of [sp, cp, bg, rms]) if (v && typeof v === "object") return err(v.err);
+  if (typeof rms === "number" && rms > 1) return err("--retake-min-sim must be between 0 and 1");
   const preset = PAUSE_PRESETS[pausePreset];
   const budgets: PauseBudgets = {
     sentence: (sp as number | null) ?? preset.sentence,
@@ -199,6 +205,7 @@ export function parseCliConfig(argv: string[]): ParsedCli {
     outDir: str(raw["out-dir"]) ?? null,
     seqName: str(raw.name) ?? null,
     budgets,
+    retakeMinSim: (rms as number | null) ?? null,
   };
 
   if (Number.isNaN(config.crf)) return err("--crf must be a number");
@@ -213,7 +220,7 @@ function blankConfig(): Config {
     preset: "medium", normalize: true, lang: null, srt: true, vtt: true, json: true,
     dryRun: false, cacheDir: join(SKILL_DIR, ".cache"), apiKey: null,
     to: ["xml"], scriptPath: null, partsDir: null, outDir: null, seqName: null,
-    budgets: PAUSE_PRESETS.medium,
+    budgets: PAUSE_PRESETS.medium, retakeMinSim: null,
   };
 }
 

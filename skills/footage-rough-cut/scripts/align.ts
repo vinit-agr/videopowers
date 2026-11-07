@@ -36,6 +36,8 @@ export interface AlignOptions {
   farBackJump: number;
   /** …must reach this similarity (guards against spurious back-matches). */
   farBackThreshold: number;
+  /** Min script similarity a later take needs to supersede (kill) an earlier one. */
+  killerMinSim: number;
 }
 
 export const DEFAULT_ALIGN_OPTIONS: AlignOptions = {
@@ -50,6 +52,7 @@ export const DEFAULT_ALIGN_OPTIONS: AlignOptions = {
   shortPhraseThreshold: 0.85,
   farBackJump: 6,
   farBackThreshold: 0.75,
+  killerMinSim: 0.75,
 };
 
 /** A phrase from one part, in global recording order. */
@@ -291,7 +294,11 @@ export function alignToScript(
     const home = script.beats[prevRun.beat]!;
     const lo = home.sentences[0]!.index;
     const hi = home.sentences[home.sentences.length - 1]!.index;
-    const anchor = prevRun.members[prevRun.members.length - 1]!.span![1];
+    // A run healed earlier (but not merged) can hold members whose span was
+    // cleared — anchor on its last still-matched member.
+    const anchorPhrase = [...prevRun.members].reverse().find((p) => p.span !== null);
+    if (!anchorPhrase) continue;
+    const anchor = anchorPhrase.span![1];
     for (const p of run.members) {
       const tokens = normTokens(p.phrase.text);
       const m = bestSpanInRange(tokens, script, lo, hi, anchor, opts);
@@ -335,7 +342,7 @@ export function alignToScript(
   let retakeClusters = 0;
   const LOCALITY_SECONDS = 45;
   const CROSS_PART_ORDER_REACH = 12;
-  const KILLER_MIN_SIM = 0.75;
+  const KILLER_MIN_SIM = opts.killerMinSim;
   const MIN_KILL_TOKENS = 4;
   const CONTAINMENT = 0.7;
 
@@ -415,6 +422,37 @@ export function alignToScript(
       p.dropped = true;
       p.dropReason = "debris after dropped take";
       p.droppedBy = prev.droppedBy;
+    }
+  }
+
+  // Restarts: a phrase whose words are a prefix of a following take seconds
+  // later ("In this video," → "in this video, I will show you…", "You will
+  // als-" → "You will also see…") is an abandoned start. Every word it holds
+  // is re-spoken by the survivor, so dropping it can never lose content. A
+  // truncated last word ("als-") only needs to prefix the survivor's word.
+  const RESTART_MAX_GAP_S = 30;
+  const RESTART_LOOKAHEAD = 4;
+  {
+    const isPrefix = (a: string[], b: string[]): boolean =>
+      a.length > 0 &&
+      a.length <= b.length &&
+      a.every((t, i) => (i === a.length - 1 ? b[i]!.startsWith(t) : b[i] === t));
+    const active = phrases.filter((p) => !p.dropped);
+    for (let i = 0; i < active.length; i++) {
+      const a = active[i]!;
+      const aTokens = tokensOf[a.order]!;
+      for (let j = i + 1; j <= Math.min(active.length - 1, i + RESTART_LOOKAHEAD); j++) {
+        const b = active[j]!;
+        if (b.part !== a.part || b.phrase.start - a.phrase.end > RESTART_MAX_GAP_S) break;
+        const bTokens = tokensOf[b.order]!;
+        if (bTokens.length > aTokens.length && isPrefix(aTokens, bTokens)) {
+          a.dropped = true;
+          a.dropReason = "restart (prefix of a following take)";
+          a.droppedBy = b.order;
+          retakeClusters++;
+          break;
+        }
+      }
     }
   }
 

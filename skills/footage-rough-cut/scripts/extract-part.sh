@@ -27,12 +27,25 @@ mkdir -p "$OUTDIR"
 # role, not by channel number.
 WEBCAM=$(ls "$REC"/channel-*-webcam-0.m3u8 2>/dev/null | head -1)
 MIC=$(ls "$REC"/channel-*-microphone-0.m4a 2>/dev/null | head -1)
-ENH=$(ls "$REC"/enhanced/channel-*-microphone-0-enhanced.m4a 2>/dev/null | head -1)
+ENH=$(ls "$REC"/enhanced/channel-*-microphone-0-enhanced.m4a 2>/dev/null | head -1 || true)
 [ -n "$WEBCAM" ] || { echo "error: no webcam m3u8 found in $REC" >&2; exit 1; }
 [ -n "$MIC" ] || { echo "error: no microphone m4a found in $REC" >&2; exit 1; }
 [ -n "$ENH" ] || ENH="$REC/enhanced/__missing__"
 
-expected=$(python3 -c "import json; print(json.load(open('$BASE/part$N.screenstudio/project.json'))['json']['config']['recordingRange'][1]/1000)")
+# Expected duration: older Screen Studio stores config.recordingRange in
+# project.json; newer (polyrecorder 2.7+) only has the webcam session's
+# durationMs in recording/metadata.json.
+expected=$(python3 - "$BASE/part$N.screenstudio" <<'PY2'
+import json, sys
+b = sys.argv[1]
+try:
+    print(json.load(open(f"{b}/project.json"))["json"]["config"]["recordingRange"][1] / 1000)
+except (KeyError, TypeError):
+    m = json.load(open(f"{b}/recording/metadata.json"))
+    wc = next(r for r in m["recorders"] if r.get("type") == "webcam" or "webcam" in r.get("id", ""))
+    print(wc["sessions"][0]["durationMs"] / 1000)
+PY2
+)
 echo "[part$N] expected duration: ${expected}s"
 
 COMMON_IN=(-i "$WEBCAM" -i "$MIC")

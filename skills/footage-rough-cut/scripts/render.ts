@@ -2,7 +2,7 @@ import { mkdir, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { runFfmpeg } from "./ffmpeg.js";
 import { verifyOutput } from "./verify.js";
-import type { Edl, Quality } from "./types.js";
+import { qualityHeight, type Edl, type Quality } from "./types.js";
 
 export interface RenderOptions {
   quality: Quality;
@@ -85,7 +85,9 @@ export async function render(edl: Edl, output: string, opts: RenderOptions): Pro
 
       const videoArgs = opts.hasVideo
         ? [
-            ...(opts.quality === "1080p" ? ["-vf", "scale=-2:1080"] : []),
+            ...(qualityHeight(opts.quality) !== null
+              ? ["-vf", `scale=-2:'min(${qualityHeight(opts.quality)},ih)'`]
+              : []),
             "-c:v", "libx264", "-preset", opts.preset, "-crf", String(opts.crf), "-pix_fmt", "yuv420p",
             // Force constant frame rate at the source's nominal rate so VFR
             // recordings (screen recorders love these) come out clean.
@@ -161,9 +163,10 @@ export interface RenderPlanOptions {
 export async function renderPlan(plan: CutPlan, output: string, opts: RenderPlanOptions): Promise<void> {
   await mkdir(opts.workDir, { recursive: true });
   const fps = plan.fps;
+  const target = qualityHeight(opts.quality);
   const [width, height] =
-    opts.quality === "1080p" && plan.height > 1080
-      ? [Math.round((plan.width / plan.height) * 1080 / 2) * 2, 1080]
+    target !== null && plan.height > target
+      ? [Math.round((plan.width / plan.height) * target / 2) * 2, target]
       : [plan.width, plan.height];
   const fpsArg = String(Math.round(fps));
   const scale = `scale=${width}:${height}:force_original_aspect_ratio=decrease,pad=${width}:${height}:(ow-iw)/2:(oh-ih)/2,setsar=1`;
