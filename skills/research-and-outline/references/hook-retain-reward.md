@@ -36,6 +36,13 @@ buying videos usually open on the call-out.
 and C" is a plan, not a hook. A promise is about what the viewer gets; a
 list of sections is about the video.
 
+**A numbered promise is fine.** Hormozi says to give the number of items
+early. Number the promise when each item says what the viewer will know or
+be able to do after that part, and it comes after the proof, stakes and
+open loop, never in their place.
+- Section: "1. how many people drop off as the wait grows"
+- Promise: "1. how many people you lose for every day they wait"
+
 ### Example (a fictional company that sells bookkeeping software to dental practices)
 
 > **[Call-out]** If you run a dental practice with two or three dentists,
@@ -58,24 +65,51 @@ run an addiction treatment center or an outpatient mental health clinic."
 
 ## Retain
 
-- Curiosity drives it. Each chapter opens a question the viewer wants
-  answered.
-- Three devices:
-  - **lists:** flexible, less explicit reward;
-  - **steps:** "actions that must be done in a specific order to get a
-    result"; less flexible, more explicit reward;
-  - **stories:** a person, a moment, what happened.
-- Use "but" and "so" between chapters, not "and then".
-- Announce what's coming only when it helps the viewer follow, and never
-  as the hook.
+Hormozi: "My favorite driver of retention is curiosity." He gives three
+devices to hold it:
+- **lists** are flexible, with a less explicit reward;
+- **steps** are "actions that must be done in a specific order to get a
+  result": less flexible, with a more explicit reward;
+- **stories** "describe events real or imaginary": a person, a moment,
+  what happened.
+
+They combine: "You can have lists within steps and a story about each
+list item." A made-up story is fine if the script says it's made up; the
+facts and the proof around it never are.
+
+A checklist for every chapter, like the hook's. Each element has a one-line test.
+
+| Element | Required? | Test |
+|---|---|---|
+| **Open question** | yes | Does the chapter's first line ask, or pick up, a question the viewer now wants answered (its mini hook)? The last chapter's hand-over counts if this chapter restates it. |
+| **One device** | yes | Can you name it: a list, steps or a story, or a mix of them? Steps when the order matters, a list when it doesn't, a story when a person makes the point. |
+| **Count said early** | for a list or steps | Does the chapter say how many items there are before the first one, even if the hook already did? |
+| **Always a question open** | yes | At every point, is something still unanswered, so there's no natural place to stop watching? A chapter answers its own question only after the hand-over has opened the next one. |
+| **Turns, not a list of events** | yes | Does the chapter join the last one with "but" or "so", not "and then"? |
+| **Hand-over** | except the last chapter | As this chapter pays off, does the next question open ("Okay, so it works. But what does it cost?")? |
+
+Announce what's coming only when it helps the viewer follow. Never let the
+announcement stand in for the hook.
 
 ## Reward
 
-- Match or beat the promise. If the hook promised three numbers, the video
-  gives three numbers.
-- Pay off every open loop, ideally the main one near the end.
-- High value per second. Cut anything the story doesn't use.
-- One thing the viewer can do **the same day**.
+Hormozi: "Rewarding your audience means matching or exceeding their
+expectations when they decided to consume your content." Also: "Think value
+per second", and "There's no such thing as too long, only too boring."
+
+A checklist for the whole video, and for each chapter that stands alone:
+
+| Element | Required? | Test |
+|---|---|---|
+| **Promise kept** | yes | For each promise in the hook, can you point to the line that delivers it? If the hook promised three numbers, the video gives three. |
+| **Every loop closed** | yes | Is every open loop paid off? The main one, the hook's open-loop line, pays off near the end, not in the middle. |
+| **Value per second** | yes | For each line, would cutting it lose anything? If not, cut it. |
+| **Chapter payoff** | for chapters that stand alone | Does the chapter answer its own question before the next one starts? |
+| **Same-day action** | yes | Is there one thing the viewer can do the same day? |
+| **More than expected** | when there's a real one | Do they get something they didn't expect, such as a check, a tool or a number? Never padding. |
+
+These checklists come first. For a second, lower-priority look at the
+structure, see `structure-ideas.md`.
 
 ## Each chapter as a small unit
 

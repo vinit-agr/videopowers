@@ -66,8 +66,9 @@ revise it per the human's comments.
    ideas, or more words than the length range → propose a part 1 and
    part 2 (`references/outline-format.md`).
 5. **Write the outline** in `outline.md`
-   (`references/outline-format.md`; the hook, retain and reward rules are
-   in `references/hook-retain-reward.md`). A `conversation` video gets the
+   (`references/outline-format.md`). Check it against the hook, retain and
+   reward checklists in `references/hook-retain-reward.md`, then, at lower
+   priority, the ideas in `references/structure-ideas.md`. A `conversation` video gets the
    conversation outline instead. The length type comes from the registry;
    change it only with a reason in the outline. Registry → `outlined`, with
    the version in the note.

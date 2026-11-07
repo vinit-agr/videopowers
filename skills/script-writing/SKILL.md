@@ -71,7 +71,7 @@ For *Write*, in this order (for *Rework*, steps 1–3 and 5; for *Learn* and
    personal stories and opinions. If the story needs something the outline
    doesn't give, leave a marker, `[⚠ speaker: <what is needed>]`, and list
    it in your reply. Every open ⚠ item of the outline stays a marker.
-4. **Self-check, line by line, before the human sees it.** Four passes:
+4. **Self-check, line by line, before the human sees it.** Five passes:
    - **Craft:** the check line of every rule in `references/craft.md`.
    - **Niche:** no word from the "not" column, unless the speaker file uses
      it; every `must` row honoured in each chapter where its topic comes
@@ -83,7 +83,12 @@ For *Write*, in this order (for *Rework*, steps 1–3 and 5; for *Learn* and
      speaker's way: 26% may be "about 1 in 4"); every open loop is paid
      off; the hook's elements are all there; spoken words (markers not
      counted) inside the length range.
-   Then the parser rules in `references/script-format.md`.
+   - **Retain and reward:** the checklists in
+     `../research-and-outline/references/hook-retain-reward.md`, on the
+     spoken lines (each chapter opens a question and hands over; every
+     promise has the line that keeps it).
+   Then the parser rules in `references/script-format.md`. Last, at lower
+   priority: `../research-and-outline/references/structure-ideas.md`.
 5. **Save** `script.md`, an identical `script.generated.md` (never edited
    again), and `script-rounds/01-claude.md`. Registry → `scripted`.
 6. Tell the human: words and minutes, the open markers, and what to do
