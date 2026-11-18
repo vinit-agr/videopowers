@@ -13,24 +13,30 @@ one, and each chapter can be a small one.
 
 ## The hook
 
-A checklist, not a formula. Eight elements; each has a one-line test.
+A checklist, not a formula. Ten elements; each has a one-line test.
 
 | Element | Required? | Test |
 |---|---|---|
 | **Call-out** | yes | Would the right viewer think "this is for me" in the first sentence, in their own words? |
-| **Surprise** | when there's a real one | Is there a fact that makes them stop: "wait, really?" Never invented. |
+| **Scene** | when the problem has a person in it | One person the viewer serves, in one concrete moment: who they are, where, on what, and what they want ("a father on his laptop, five websites open in tabs, trying to decide who to call"). The same person comes back in the chapters. |
+| **Focus** | when the topic has obvious other angles | Does the hook name the angles the viewer expects, set them aside, and say which one this video takes, as one view among several? ("There are a lot of ways to judge a website… this video looks only at what it tells him.") |
+| **Surprise** | when there's a real one | Is there a fact that makes them stop: "wait, really?" Never invented. Not something the viewer could guess, not something easy that most already do, and not true by definition (a finding that only restates how you scored). |
 | **Proof** | yes | Is there a number, a credential or first-hand experience that earns trust? |
 | **Stakes** | yes | Do they hear what it costs them (people, money, time) to get this wrong? |
-| **Open loop** | yes | Is there one specific question left open that only the video answers? |
-| **Promise** | yes | Do they know what they'll know or be able to do by the end? |
-| **Plan** | when it helps | One line on how the video goes. Never a list of every section. |
+| **Open loop** | yes | Is there one specific question left open that only the video answers? Does it hold back the answer: no score, number or name that gives it away? |
+| **Promise** | yes | Do they know what they'll know or be able to do by the end, and can they put it in place this week? If the stakes are a loss, does it name the cause ("…losing every month, because visitors can't check their price")? "Learn from the best", never "copy them". |
+| **Plan** | when it helps | One line on how the video goes, each part saying what it answers. Never a list of every section. |
 | **Disqualifier** | when it helps | Who it's not for. Can go at the end of the hook, or be left out. |
 
 **Order follows the awareness step.** A problem video (steps 1–2) may open
 on a moment the viewer recognises and give the call-out second. Options and
-buying videos usually open on the call-out.
+buying videos usually open on the call-out. A video built on the company's
+own study often runs: call-out → scene → why it matters → focus and what
+was checked → surprise → proof → stakes → promise → open loop → plan.
 
-**Length:** about 150–200 spoken words, about a minute. Over that, cut.
+**Length:** about 150–300 spoken words. A hook that opens on a scene and
+explains a study may run to about 450 (two minutes) if every line earns its
+place; past that, cut.
 
 **Never a table of contents on its own.** "In this video I'll cover A, B
 and C" is a plan, not a hook. A promise is about what the viewer gets; a
@@ -57,7 +63,7 @@ open loop, never in their place.
 > **[Promise]** By the end of this video, you'll know where the missing
 > money hides, and how to check your own books this week.
 
-About 120 words: shorter than the 150–200 target, with room for a plan or
+About 120 words: under the 150–300 target, with room for a plan or
 a disqualifier.
 
 Named example of a call-out, from Tars (behavioral health): "Let's say you
@@ -86,7 +92,9 @@ A checklist for every chapter, like the hook's. Each element has a one-line test
 | **Count said early** | for a list or steps | Does the chapter say how many items there are before the first one, even if the hook already did? |
 | **Always a question open** | yes | At every point, is something still unanswered, so there's no natural place to stop watching? A chapter answers its own question only after the hand-over has opened the next one. |
 | **Turns, not a list of events** | yes | Does the chapter join the last one with "but" or "so", not "and then"? |
-| **Hand-over** | except the last chapter | As this chapter pays off, does the next question open ("Okay, so it works. But what does it cost?")? |
+| **Why it matters** | for each problem or gap the chapter names | Is there a moment that shows what it costs the person from the hook ("he's at work and can't call, so he closes the tab")? A problem with no person in it is a statistic. |
+| **Few numbers** | yes | One plain number per point, said as a story where it can be ("all 7 did it, about half of the rest"). A run of figures belongs on screen, not in the outline's spoken line. |
+| **Hand-over** | except the last chapter | As this chapter pays off, does it say in one line what the part gave, then open the next question ("Okay, so it works. But what does it cost?")? |
 
 Announce what's coming only when it helps the viewer follow. Never let the
 announcement stand in for the hook.
@@ -106,6 +114,8 @@ A checklist for the whole video, and for each chapter that stands alone:
 | **Value per second** | yes | For each line, would cutting it lose anything? If not, cut it. |
 | **Chapter payoff** | for chapters that stand alone | Does the chapter answer its own question before the next one starts? |
 | **Same-day action** | yes | Is there one thing the viewer can do the same day? |
+| **Clean close** | yes | No recap of what they just watched. One test or step for today, then the next step (an offer said in full: what, where, what they get), then thanks. |
+| **Honest limits** | for a study | One limit line: what was and wasn't covered ("I didn't check every one; these are the 40 that came up when I searched"). In the method chapter or just before the close. |
 | **More than expected** | when there's a real one | Do they get something they didn't expect, such as a check, a tool or a number? Never padding. |
 
 These checklists come first. For a second, lower-priority look at the

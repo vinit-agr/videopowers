@@ -1,6 +1,6 @@
 ---
 name: script-writing
-description: Use when an approved video outline needs a script.md the speaker can read on camera without changes, when a script needs a rework after the speaker's edits, when the speaker's edits to a generated script should be learned (script-writing learn), or when a new speaker needs a voice file.
+description: Use when an approved video outline needs a script.md the speaker can read on camera without changes, with its reading files (read-aloud.md, teleprompter.md, natural_script.md); when a script needs a rework, or the speaker's hand edits to read-aloud.md need carrying back into script.md; when the speaker's edits should be learned (script-writing learn); or when a new speaker needs a voice file.
 ---
 
 # script-writing
@@ -15,6 +15,33 @@ content-ideation ─► research-and-outline ─► script-writing ─► record
 
 At this stage only the **wording** changes. The story, numbers, claims and
 chapters were decided in the outline.
+
+## The reading files
+
+`script.md` is for the code downstream (Show cues, sources, the parser).
+Speakers read, and edit, a plainer copy. In practice **the speaker's edits
+land in `read-aloud.md`, not in `script.md`**, so that is where a rework
+starts and where learning looks.
+
+| File | Who uses it | Rule |
+|---|---|---|
+| `script.md` | footage-rough-cut, mg-setup, Claude | The source; every spoken word lives here first |
+| `read-aloud.md` | The speaker, reading word for word; edited by hand | Same spoken words as `script.md`, always |
+| `teleprompter.md` | A teleprompter app | Rebuilt from `read-aloud.md`; never edited |
+| `natural_script.md` | The speaker, talking from cards | Primers copied word for word from `script.md` |
+
+Formats: `references/script-format.md`, *The reading files*. The tool, run
+from this skill's folder (one-time: `pnpm install --ignore-workspace`):
+
+```bash
+pnpm -s read-aloud build "<video>/script.md"                 # → read-aloud.md (refuses to overwrite)
+pnpm -s read-aloud check "<video>/script.md" "<video>/read-aloud.md"   # same words? exit 1 if not
+pnpm -s read-aloud teleprompter "<video>/read-aloud.md"      # → teleprompter.md
+```
+
+**Run `check` before every change and after it.** If it fails before you
+start, the speaker has edited one of the files: *Sync the speaker's
+edits* first. Never rebuild `read-aloud.md` over the speaker's edits.
 
 ## Three layers
 
@@ -49,7 +76,10 @@ For *Write*, in this order (for *Rework*, steps 1–3 and 5; for *Learn* and
    plan for the recording.
 4. `outline.md` doesn't start with `Approved` (the approval-word rule) →
    stop, and say the outline needs the human's approval first
-   (research-and-outline).
+   (research-and-outline). If the human says in this conversation to write
+   it anyway ("looks good, go ahead"), go ahead, and say so in the header
+   line ("outline v0.3, approved in chat, not marked"). Never write
+   `Approved` yourself.
 5. The speaker (registry `speaker`, else the default speaker) has no file
    → stop and offer *Speaker setup*. Only if the human says to go ahead
    without one: use craft + niche only, and say so in the header.
@@ -71,6 +101,10 @@ For *Write*, in this order (for *Rework*, steps 1–3 and 5; for *Learn* and
    personal stories and opinions. If the story needs something the outline
    doesn't give, leave a marker, `[⚠ speaker: <what is needed>]`, and list
    it in your reply. Every open ⚠ item of the outline stays a marker.
+   **A line the outline gives in quotes is approved wording:** keep it,
+   even where a craft rule would change it, and list the clash in your
+   reply for the speaker to decide. Craft shapes the lines the outline
+   gives only as ideas.
 4. **Self-check, line by line, before the human sees it.** Five passes:
    - **Craft:** the check line of every rule in `references/craft.md`.
    - **Niche:** no word from the "not" column, unless the speaker file uses
@@ -89,27 +123,59 @@ For *Write*, in this order (for *Rework*, steps 1–3 and 5; for *Learn* and
      promise has the line that keeps it).
    Then the parser rules in `references/script-format.md`. Last, at lower
    priority: `../research-and-outline/references/structure-ideas.md`.
+   **Read it as the speaker would, last.** Read the Say text alone, top
+   to bottom, as one listener: does every payoff say what it pays off
+   (craft 28), does each hand-over say what the part gave (27), does the
+   close skip the recap (30)? These are the edits speakers make most.
 5. **Save** `script.md`, an identical `script.generated.md` (never edited
    again), and `script-rounds/01-claude.md`. Registry → `scripted`.
-6. Tell the human: words and minutes, the open markers, and what to do
-   next: read it aloud; write `Locked` as its first line when it's right.
+6. **Make the reading files:** `read-aloud.ts build`, then add a link line
+   after each block that says a key number (from *Numbers and sources*).
+   Then `teleprompter`, if the workspace's recording method is
+   `teleprompter` or the speaker uses one, and `natural_script.md`, if the
+   speaker records from cards (speaker file). Run `check`.
+7. Tell the human: words and minutes, the open markers, and what to do
+   next: read `read-aloud.md` aloud and edit it by hand where it doesn't
+   sound like them; write `Locked` as the first line of `script.md` when
+   it's right.
 
 ## Rework
 
-The speaker has edited `script.md` and asks for a change ("the close is too
-long"). First: a change to numbers, claims or chapters isn't a rework; it
+The speaker asks for a change ("the close is too long"), usually after
+editing `read-aloud.md` or `script.md` by hand. First: a change to numbers, claims or chapters isn't a rework; it
 goes back to the outline (research-and-outline, gate 1). A locked script:
 ask first; if yes, remove the `Locked` line, say so, and set the registry
 back to `scripted`.
 
-1. Read `script.md` from disk. Save it as `script-rounds/<NN>-speaker.md`
+1. Run `check`. If it fails, *Sync the speaker's edits* first.
+2. Read `script.md` from disk. Save it as `script-rounds/<NN>-speaker.md`
    (NN = the next round number) **before touching anything**.
-2. Change only what was asked, on top of their version. Every other edit of
+3. Change only what was asked, on top of their version. Every other edit of
    theirs stays word for word.
-3. Keep the spoken words inside the length range (say so if the request
+4. Keep the spoken words inside the length range (say so if the request
    can't be met inside it), and update the header line. A marker the
    speaker removed is their call: mention it, don't restore it.
-4. Save the result as `script.md` and `script-rounds/<NN>-claude.md`.
+5. Save the result as `script.md` and `script-rounds/<NN>-claude.md`.
+6. Carry the same change into the reading files: edit the changed blocks
+   of `read-aloud.md` in place (its other blocks and link lines stay as
+   they are), then `check`, then rebuild `teleprompter.md` and recopy any
+   changed primers in `natural_script.md`.
+
+## Sync the speaker's edits
+
+`check` fails because the speaker edited `read-aloud.md` (the usual case)
+or `script.md`. Their edited file wins, word for word.
+
+1. Save the edited file as `script-rounds/<NN>-speaker-read-aloud.md` (or
+   `<NN>-speaker.md` for `script.md`) **before touching anything**.
+2. Carry each changed sentence into the other file. In `script.md`, fix
+   only what the parser can't take ("1. " lines → "Number 1." or "First,",
+   `e.g.`, brackets), then tell the speaker what was changed and put the
+   same words back in `read-aloud.md`.
+3. A new number, claim or name in their edit: add it to *Numbers and
+   sources* if a source exists, else ask; never drop it silently.
+4. `check` until it passes. Save `script-rounds/<NN>-claude.md`; rebuild
+   `teleprompter.md`; recopy changed primers in `natural_script.md`.
 
 ## Lock
 
@@ -134,8 +200,6 @@ A new speaker, or none on file: `references/speaker-setup.md`.
 
 ## Later (not in v1)
 
-- Prompt cards (`natural_script.md`) made from a locked script, for
-  speakers who talk from bullet points.
 - Other formats: a blog post, a podcast script, a LinkedIn post.
 - A host script for conversation videos.
 
@@ -149,5 +213,9 @@ A new speaker, or none on file: `references/speaker-setup.md`.
 | Long paragraphs for a short-takes speaker | 1–3 sentences, each one take |
 | `9 a.m.`, `e.g.`, `**First:**` inside Say text | The parser rules in `references/script-format.md` |
 | Reworking over the speaker's edits | Snapshot their version first; change only what was asked |
+| Rebuilding `read-aloud.md` after the speaker edited it | `check` first; sync their edits into `script.md`; edit blocks in place |
+| Editing `script.md` and forgetting the reading files | Same change in `read-aloud.md`, then `check`, then `teleprompter` |
+| Learning from `script.md` when the speaker edited `read-aloud.md` | Compare the read-aloud rounds (`references/learning.md`) |
+| A recap in the close; a bare "So those are the 3 questions." | Craft 30 and 27 |
 | Writing `Locked` yourself | Only the human writes it |
 | Changing the plugin's craft file from a workspace | Craft lessons go to the plugin author as a note |

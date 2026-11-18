@@ -32,12 +32,13 @@ Tags: <bucket> / step <n> · <source> · <product> · <who, at what moment> · s
 Words: <n>
 
 ## Chapters
-| # | Chapter | Words | Claim | Proof / numbers | Mini hook → reward | Stands alone? + clip's first line |
-|---|---|---|---|---|---|---|
-| 1 | … | … | … | … | … | yes · "…" |
+| Chapter | What it says |
+|---|---|
+| **1. <title>**<br><br>**Words:** …<br><br>**Proof / numbers:** …<br><br>**Mini hook → reward:** "…" → …; hand-over: "…"<br><br>**Stands alone:** yes · "<clip's first line>" | <The claim, then the points in order, each with a bold label: **Which websites:** …<br><br>**Why it matters:** …> |
+| **Body total**: **…** (ch1 … · ch2 …) | |
 
 ## Close
-<The reward: how it pays off the promise and every open loop> · <the one thing to do today> · <one next step>
+<The reward: which chapter lines pay off the promise and every open loop (a note for review; the close itself doesn't recap them)> · <the one thing to do today> · <one next step>
 Words: <n>
 
 ## Numbers used
@@ -51,8 +52,18 @@ Words: <n>
 Rules:
 
 - **The hook table** has one row per element used: the five required ones
-  (call-out, proof, stakes, open loop, promise) always, plus surprise,
-  plan or disqualifier when they fit (`hook-retain-reward.md`).
+  (call-out, proof, stakes, open loop, promise) always, plus scene, focus,
+  surprise, plan or disqualifier when they fit (`hook-retain-reward.md`).
+  Rows go in the order they'll be said. A row may hold the line itself
+  (in quotes) or the idea; the closer to final words, the fewer script
+  rounds later.
+- **The chapters table** has two columns, so it reads on a phone: the
+  left holds the labels (title, words, numbers, mini hook, stands alone),
+  the right says what the chapter says, as short labelled points. No
+  narrow multi-column tables.
+- **The speaker's voice:** write the spoken ideas in the person the
+  speaker will say them in ("I checked", not "we checked", for work they
+  did alone; their speaker file says which).
 - **Word budgets:** hook + every chapter + close add up to a number inside
   the video's length range (framework.md, *Length types*). Over the range →
   propose a split (below) rather than squeeze.
@@ -68,6 +79,13 @@ Rules:
   *Never claim* list.
 - **Mini hook → reward:** "—" where there isn't one (e.g. "Who is
   speaking"). Don't force it.
+- **A study's method chapter** says, in plain words: where the sample
+  came from, what was looked at (which pages, on what devices), how each
+  item was scored and that the scoring was written down first, what was
+  not done (no forms filled, no calls made, and why: those lines are for
+  real people), and one limit line, here or before the close. Leave out
+  the numbers of the sampling funnel (searches run, sites dropped); they
+  go in *Numbers used* as "not said".
 - **Stands alone?** `yes` with the clip's own first line, or `no`.
 - **Versions.** Revise in place: overwrite `outline.md`, raise the version
   in the title line, and say what changed on the line under it. The

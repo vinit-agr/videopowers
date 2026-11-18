@@ -23,7 +23,7 @@ ideation ─► research + outline ─► script ─► record ─► rough cut 
 |---|---|---|---|
 | `content-ideation` | pre-production | plan a month or the next video, test one idea, review a plan; packaging v1 (overview, titles, first line, thumbnail concept + HTML mockup) with a Reach / Sales score | **built** |
 | `research-and-outline` | pre-production | planned idea → research (desk, your own study behind a criteria gate, or conversation prep) + an approved one-page story outline with stand-alone chapters | **built** |
-| `script-writing` | pre-production | approved outline + craft, niche and speaker layers → a `script.md` to read on camera without edits; learns from the speaker's edits | **built** |
+| `script-writing` | pre-production | approved outline + craft, niche and speaker layers → a `script.md` to read on camera without edits, plus `read-aloud.md`, `teleprompter.md` and `natural_script.md`; syncs and learns from the speaker's hand edits | **built** |
 | `packaging-kit` | post | late packaging: chapters with timestamps and the final description (early packaging lives in content-ideation) | planned |
 | `footage-rough-cut` | edit | camera recordings + script → retake-cleaned rough cut on a Resolve timeline | **built** |
 | `natural-footage-rough-cut` | edit | improvised recordings from prompt cards (`natural_script.md`) → finished rough cut, retakes found by meaning, with judgment-call markers + a review reel | **built** |

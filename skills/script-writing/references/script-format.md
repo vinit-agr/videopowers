@@ -80,7 +80,8 @@ The parser can't warn you, so these are rules:
 4. A sentence ends at any `.` `?` `!` or `…` followed by a space. So never
    put one of those inside a sentence: write `9 am` (not `9 a.m.`),
    `versus` (not `vs.`), `for example` (not `e.g.`), `number 3` (not
-   `No. 3`), `US` (not `U.S.`). No "1. " numbered lines, and no `…` in the
+   `No. 3`), `US` (not `U.S.`). A speaker who says "i.e." aloud gets
+   `i.e.,` with the comma, which doesn't end the sentence. No "1. " numbered lines, and no `…` in the
    middle of a sentence.
 5. An open item is a marker inside the Say text:
    `[⚠ speaker: <what is needed>]`. The text inside never contains `.` `?`
@@ -122,3 +123,103 @@ See you next week.
 
 This example parses as 3 beats. The open marker means it can't be locked
 yet.
+
+## The reading files
+
+`script.md` is the source of truth for the code downstream. The speaker
+reads, and usually edits, a plainer copy. Spoken words must stay identical
+across all of them; `scripts/read-aloud.ts check` proves it (see SKILL.md,
+*The reading files*).
+
+| File | For | Made by |
+|---|---|---|
+| `read-aloud.md` | Reading a script word for word on camera. The file the speaker edits by hand | `read-aloud.ts build`, then link lines added by hand |
+| `teleprompter.md` | A teleprompter app (voice-follow or scrolling) | `read-aloud.ts teleprompter`, from `read-aloud.md` |
+| `natural_script.md` | Speaking from prompt cards, not word for word | Written by hand from `script.md` |
+
+### `read-aloud.md`
+
+````markdown
+# <Video title>
+
+## Hook
+
+```
+<first sentence of take 1>
+<second sentence of take 1>
+```
+
+[<Source name: the number, in words>](<url or file>)
+
+```
+<take 2>
+```
+
+## <Chapter 1 title>
+…
+````
+
+- **Say text only.** No Show or Note lines and no Numbers and sources. An
+  open marker stays as it is, so it can't be missed.
+- **One code block per take** (one Say paragraph, including the follow-on
+  paragraphs of a Say block). **One sentence per line** inside it, so the
+  speaker's eye finds the next sentence fast.
+- **`## ` headings** match the script's beats.
+- **Link lines** go between blocks, right after the block that says the
+  number: `[<Source name>: <the number, in words>](<url or file>)`, the
+  same shape as the example above. They're for the speaker to check a
+  number while reading; they're never spoken. A rebuild keeps a block's
+  link lines only if its words didn't change.
+- The speaker may write numbered lines here ("1. Can I find out…"). In
+  `script.md` they become "Number 1." or "First," (parser rule 4), and the
+  same words go back into `read-aloud.md`, so the check passes.
+
+### `teleprompter.md`
+
+Spoken words only, for an app that shows plain text or Markdown at a narrow
+width: no title, no headings, no code fences, no links. One take per
+paragraph, one sentence per line, a blank line between takes. No line may
+start with `-`, `*`, `+`, `#`, `>` or "1." (a Markdown viewer turns those
+into lists, headings or quotes); the tool warns if one does. Rebuild it
+every time `read-aloud.md` changes; it is never edited by hand.
+
+### `natural_script.md`
+
+For speakers who talk from prompt cards (the `natural-footage-rough-cut`
+skill parses it: sections `## N.`, cards `### Card Nx`, free bullets,
+`> 🔒` fixed lines).
+
+```markdown
+# <Video title>. Natural script (beat cards)
+
+<One line: made from script.md, which round; edits go back into script.md first.>
+
+## How to use this file
+1. Read the section's primer out loud twice.
+2. Record one card at a time. Bullets are free: say them in your own words. 🔒 lines are fixed: say every number, name and quote exactly.
+3. If you stumble, pause, say "again", and restart that thought.
+
+---
+
+## 1. Hook
+
+**The point:** <one or two sentences: what this section must land.>
+
+📖 **Primer: read this out loud twice**
+
+<The section's Say text, copied word for word from script.md, one take per paragraph.>
+
+### Card 1a: <what this card covers>
+- <a free line, in short words>
+- …
+
+> 🔒 <a fixed line: a number, a name, a quote or the offer, word for word>
+```
+
+- One `## N.` section per script beat, in order; 2–4 cards per section,
+  one card per 1–3 takes.
+- **🔒 lines** hold everything that must be exact: numbers with their
+  source, names, quotes, the self-introduction's credentials, the offer.
+  Everything else is a free bullet.
+- The primer is copied, never reworded; if `script.md` changes, the primer
+  is copied again.

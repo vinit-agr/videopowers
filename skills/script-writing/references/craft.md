@@ -10,7 +10,8 @@ Block's tips, Jonathan Kern's NPR guide), speechwriting (the Congressional
 Research Service guide, Peggy Noonan, Ted Sorensen), plain-language guides
 (digital.gov, GOV.UK), YouTube practitioners (the MrBeast production memo;
 Parker and Stone's "but / therefore"), and the general lessons from a
-speaker's edits to generated drafts across five videos.
+speaker's edits to generated drafts across nine videos (rules 24–30 come
+from the read-aloud edits of the last three).
 
 The examples below use made-up businesses. Each rule ends with the line used
 in the self-check.
@@ -27,7 +28,8 @@ time a listener reaches its end.
 clipped verb sounds cut off. Add the object, the unit or who it's for.
 - Before: "It took less than a minute. Cuts costs."
 - After: "It took less than a minute to set up. It cuts your delivery costs."
-- Check: *Does any sentence end on a bare noun, a dangling verb, or a fragment with no verb?*
+- The same goes for scope: say where, and for whom. "We checked 40 bakery websites" → "We checked 40 independent bakery websites in Ohio."
+- Check: *Does any sentence end on a bare noun, a dangling verb, or a fragment with no verb? Does any count or claim leave out where or who?*
 
 **3. Put the word that matters at the end.** Spoken English stresses the
 end of a sentence, so that's where the listener expects the news.
@@ -91,8 +93,11 @@ isn't the point; the cost or the gain to them is.
 ## Flow
 
 **13. Say the signposts out loud.** A listener can't see headings. Tell them
-where they are: "That's the problem. Here's what fixed it."
-- Check: *Does each chapter start with a spoken line that says where we are?*
+where they are: "That's the problem. Here's what fixed it." The best
+signpost is the viewer's own question, not a label.
+- Before: "Next, this month."
+- After: "And lastly, what can you do this month?"
+- Check: *Does each chapter start with a spoken line that says where we are, as a question the viewer has where it fits?*
 
 **14. "But" and "so", not "and then".** Cause and turn make a story; a list
 of events doesn't.
@@ -122,13 +127,19 @@ literary scene sound composed. Say the plain fact. One landing line per
 video is plenty.
 - Before: "The first three give a time. The last two give an answer."
 - After: "Three of these tell the visitor when they'll hear back. The other two answer the question right away."
-- Check: *Any line that sounds good but says less than a plain line would?*
+- Short punch words go the same way: "That's still a win." → "That's still a good thing for your shop." A one- or two-word line ("Verified." "Not one.") is kept only when the speaker's file says they use it.
+- Check: *Any line that sounds good but says less than a plain line would? Any one- or two-word line used for rhythm?*
 
-**19. No warm-up, no asides, no self-doubt.** Cut "before we start", notes
-on how the research was done, and lines like "I might be wrong about this".
-One honest note per set of numbers is enough; the speaker's standing is
-never hedged.
-- Check: *Any sentence about the video, the method or the speaker's doubts that the viewer doesn't need?*
+**19. No warm-up, no asides, no self-doubt.** Cut "before we start" and
+lines like "I might be wrong about this". The speaker's standing is never
+hedged. Two kinds of honesty stay, because they earn trust rather than
+spend it:
+- **A limit line, once:** what was and wasn't covered. "I didn't check every bakery in Ohio. These are the 40 that came up when I searched."
+- **A fairness line, once, near the start:** the view taken, said as one view among several. "It's not the only way to judge a website. But these are the questions that matter most to that customer."
+
+Method details belong in the outline's method chapter, if it has one, not
+scattered through the script.
+- Check: *Any sentence about the video, the method or the speaker's doubts that the viewer doesn't need? More than one limit line?*
 
 **20. No parentheses, abbreviations or symbols the speaker must translate.**
 Brackets can't be said; "e.g." and "vs." get said wrong.
@@ -151,3 +162,59 @@ their stories, their opinions and their results come only from the speaker
 file or the outline. If neither has them, leave a marker
 (`[⚠ speaker: one line on what you've seen work here]`).
 - Check: *Is any personal story, opinion or credential invented?*
+
+## Saying it in full
+
+**24. A reason after an instruction.** An instruction on its own sounds
+like an order; a reason makes it advice the viewer can judge.
+- Before: "List the delivery areas you cover on your home page."
+- After: "List the delivery areas you cover on your home page. Because that's the first thing most people ask."
+- Check: *Does each instruction to the viewer have its reason, in the same or the next sentence?*
+
+**25. A source sentence in two parts: who looked, then what they found.**
+A study's name, its size and its finding in one sentence is too much to
+hold. Split it, and say what kind of source it is in plain words.
+- Before: "A 2024 analysis of 1.2 million calls to home-service businesses, including plumbers and electricians, found 27% went unanswered."
+- After: "One call-tracking company looked at over a million calls to home-service businesses, like plumbers and electricians. More than 1 in 4 of those calls went unanswered."
+- Check: *Does any sentence carry a source, its size and its finding together?*
+
+**26. "I" for what the speaker did; "we" for what a team did.** A study
+the speaker ran alone is "I checked", not "we checked". "We" for one
+person sounds like a company hiding behind a voice; "I" for a team's work
+takes credit that isn't theirs. The speaker file says which is true.
+- Check: *Does every "we" refer to a team that exists, and every "I" to the speaker alone?*
+
+## Hand-overs, callbacks and the close
+
+**27. A hand-over says what the part gave, then opens the next.** A bare
+"So those are the three reasons" tells the viewer nothing. Say in one
+line why the part mattered, then ask the next question.
+- Before: "So those are the three questions."
+- After: "So those are the three questions your website should answer, fast and without a phone call. But how many websites actually do?"
+- Check: *Does each hand-over say in one line what the chapter gave the viewer, before the next question?*
+
+**28. Callbacks said out loud.** When a later line pays off something set
+up earlier, tell the viewer it's the payoff: they may have missed the
+setup or forgotten it.
+- Before: "And this is it: none of them showed a price."
+- After: "And this is the surprise I mentioned at the start: none of them showed a price."
+- When a setup will pay off much later, flag it: "Keep this in mind for later."
+- A chapter that must stand alone as a clip doesn't lean on the callback for its meaning: the clip's first line (in the outline) still makes sense without it.
+- Check: *Does every payoff of an earlier setup say so out loud?*
+
+**29. The plan says what each part is about.** If the hook ends with a
+plan, each part gets a clause on what it answers, not just its label.
+Never as "1. 2. 3." lines (parser rule 4): use "First, …", "Number 1. …"
+or a plain list in one sentence.
+- Before: "So here's the plan. The cost. What we found. What to do."
+- After: "So here's what's covered. First, what it's costing you when customers can't find your prices. Then, what we found on 40 websites. And last, what you can do this week."
+- Check: *Does each part of the plan say what it answers?*
+
+**30. The close: no recap, one test, the offer in full.** The viewer has
+just watched it; a recap ("So now you know the three questions…") is the
+first place they leave. Give one concrete thing to do today. Then, if
+there's an offer, say all of it in words: what it is, where to get it,
+and what they get from it. End with thanks.
+- Before: "So now you know the three reasons. Check your schedule. Link below. Thanks."
+- After: "Today, post next week's schedule where every cook can see it. And if you'd like help with this, book a free call on our website. On that call, I'll show you what your schedule could look like. The link is in the description. Thank you for watching."
+- Check: *Does the close recap? Is there one thing to do today? Is the offer said in full: what, where, what they get?*

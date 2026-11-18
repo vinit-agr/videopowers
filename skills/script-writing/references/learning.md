@@ -25,10 +25,25 @@ If `script-rounds/` is missing (the speaker edited `script.md` directly
 after the first draft), there is one round: `script.generated.md` against
 `script.md`.
 
+**Read-aloud rounds count too, and usually matter most.** Speakers tend to
+edit `read-aloud.md`, not `script.md`; then the `<NN>-speaker.md` files
+equal Claude's last round and show no edits at all. For each
+`script-rounds/<NN>-speaker-read-aloud.md`, compare it with the
+`read-aloud.md` Claude last handed over (the round before, or its saved
+`<NN>-read-aloud-before.md`). Take the text of the code blocks only. If
+no round files exist, compare the final `read-aloud.md` with
+`script.generated.md`.
+
+**Separate outline changes from wording changes.** When the outline
+changed between rounds (a new version), the draft→final number includes
+those changes. Report the speaker's own hand edits as their own number,
+since that is what the next draft can learn from.
+
 ## How to match sentences
 
-1. Take the spoken text only (Say blocks), and split it into sentences the
-   way the parser does (`script-format.md`, parser rule 4).
+1. Take the spoken text only (Say blocks, or the code blocks of a
+   read-aloud file), and split it into sentences the way the parser does
+   (`script-format.md`, parser rule 4).
 2. Normalise each sentence: lower case, punctuation removed.
 3. A sentence of Claude's version is **unchanged** if the same normalised
    sentence appears anywhere in the speaker's version (a moved sentence is
@@ -46,7 +61,9 @@ after the first draft), there is one round: `script.generated.md` against
   also success.
 
 Append both to the video's registry note, without asking (it's a
-measurement): `edits: draft→final 50% · rounds 30%, 10%`.
+measurement): `edits: draft→final 50% · rounds 30%, 10%`. Mark read-aloud
+rounds and outline-driven change: `edits: draft→final 40% (most from
+outline v0.2→v0.3) · read-aloud rounds 8%`.
 
 ## Sorting the patterns
 
