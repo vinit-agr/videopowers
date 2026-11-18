@@ -1,0 +1,329 @@
+{
+ "title": {
+  "size": "portrait",
+  "slots": {
+   "kicker": {
+    "max": 60
+   },
+   "headline": {
+    "max": 90
+   },
+   "lead": {
+    "max": 140,
+    "optional": true
+   }
+  }
+ },
+ "stat": {
+  "size": "portrait",
+  "slots": {
+   "kicker": {
+    "max": 60
+   },
+   "headline": {
+    "max": 90
+   },
+   "number": {
+    "max": 8
+   },
+   "number_label": {
+    "max": 90
+   },
+   "body": {
+    "max": 220,
+    "optional": true
+   },
+   "note": {
+    "max": 160,
+    "optional": true
+   }
+  }
+ },
+ "compare": {
+  "size": "portrait",
+  "slots": {
+   "kicker": {
+    "max": 60
+   },
+   "headline": {
+    "max": 90
+   },
+   "left_label": {
+    "max": 40
+   },
+   "left_value": {
+    "max": 10
+   },
+   "right_label": {
+    "max": 40
+   },
+   "right_value": {
+    "max": 10
+   },
+   "body": {
+    "max": 200,
+    "optional": true
+   },
+   "note": {
+    "max": 160,
+    "optional": true
+   },
+   "between": {
+    "max": 6,
+    "optional": true
+   }
+  }
+ },
+ "beforeafter": {
+  "size": "portrait",
+  "slots": {
+   "kicker": {
+    "max": 60
+   },
+   "headline": {
+    "max": 90
+   },
+   "rows": {
+    "list": [
+     1,
+     4
+    ],
+    "fields": {
+     "label": {
+      "max": 50
+     },
+     "before": {
+      "max": 8
+     },
+     "after": {
+      "max": 8
+     }
+    }
+   },
+   "note": {
+    "max": 160,
+    "optional": true
+   }
+  }
+ },
+ "steps": {
+  "size": "portrait",
+  "slots": {
+   "kicker": {
+    "max": 60
+   },
+   "headline": {
+    "max": 90
+   },
+   "items": {
+    "list": [
+     2,
+     4
+    ],
+    "fields": {
+     "title": {
+      "max": 60
+     },
+     "text": {
+      "max": 110,
+      "optional": true
+     }
+    }
+   }
+  }
+ },
+ "list": {
+  "size": "portrait",
+  "slots": {
+   "kicker": {
+    "max": 60
+   },
+   "headline": {
+    "max": 90
+   },
+   "items": {
+    "list": [
+     3,
+     6
+    ],
+    "fields": {
+     "text": {
+      "max": 70
+     },
+     "mark": {
+      "enum": [
+       "yes",
+       "no",
+       "dot"
+      ],
+      "optional": true
+     }
+    }
+   }
+  }
+ },
+ "quote": {
+  "size": "portrait",
+  "slots": {
+   "kicker": {
+    "max": 60
+   },
+   "quote": {
+    "max": 160
+   },
+   "who": {
+    "max": 70
+   },
+   "context": {
+    "max": 220,
+    "optional": true
+   }
+  }
+ },
+ "bars": {
+  "size": "portrait",
+  "slots": {
+   "kicker": {
+    "max": 60
+   },
+   "headline": {
+    "max": 90
+   },
+   "bars": {
+    "list": [
+     2,
+     4
+    ],
+    "fields": {
+     "label": {
+      "max": 50
+     },
+     "value": {
+      "max": 8
+     },
+     "pct": {
+      "range": [
+       0,
+       100
+      ]
+     },
+     "tone": {
+      "enum": [
+       "green",
+       "red",
+       "grey"
+      ]
+     }
+    }
+   },
+   "note": {
+    "max": 160,
+    "optional": true
+   }
+  }
+ },
+ "ask": {
+  "size": "portrait",
+  "slots": {
+   "kicker": {
+    "max": 40
+   },
+   "question": {
+    "max": 110
+   },
+   "cta": {
+    "max": 60
+   }
+  }
+ },
+ "cover": {
+  "size": "landscape",
+  "slots": {
+   "kicker": {
+    "max": 50
+   },
+   "headline": {
+    "max": 80
+   }
+  }
+ },
+ "figure": {
+  "size": "landscape",
+  "one_of": [
+   "bars",
+   "rows",
+   "items"
+  ],
+  "slots": {
+   "headline": {
+    "max": 80
+   },
+   "bars": {
+    "list": [
+     2,
+     4
+    ],
+    "optional": true,
+    "fields": {
+     "label": {
+      "max": 50
+     },
+     "value": {
+      "max": 8
+     },
+     "pct": {
+      "range": [
+       0,
+       100
+      ]
+     },
+     "tone": {
+      "enum": [
+       "green",
+       "red",
+       "grey"
+      ]
+     }
+    }
+   },
+   "rows": {
+    "list": [
+     1,
+     4
+    ],
+    "optional": true,
+    "fields": {
+     "label": {
+      "max": 50
+     },
+     "before": {
+      "max": 8
+     },
+     "after": {
+      "max": 8
+     }
+    }
+   },
+   "items": {
+    "list": [
+     2,
+     4
+    ],
+    "optional": true,
+    "fields": {
+     "title": {
+      "max": 60
+     },
+     "text": {
+      "max": 110,
+      "optional": true
+     }
+    }
+   },
+   "note": {
+    "max": 140,
+    "optional": true
+   }
+  }
+ }
+}

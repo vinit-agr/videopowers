@@ -4,7 +4,7 @@ The plugin holds the method. Everything about one company (its products,
 niche, buyers, words, speakers and videos) lives in that company's own
 repo, in a folder called the **content workspace**. This file defines how
 skills find it, the format of every file in it, and the first-run setup.
-content-ideation, research-and-outline and script-writing all follow it.
+content-ideation, research-and-outline, script-writing, atomize-extract and atomize-create all follow it.
 
 ## Finding the workspace
 
@@ -109,7 +109,7 @@ Sections, in this order:
 | Section | Holds |
 |---|---|
 | Company | One sentence |
-| Products | One sentence each |
+| Products | One sentence each. For micro content, also a fenced `products` block listing short product ids, one per line, plus `none` (posts are tagged with one) |
 | Niche | The industry, in the buyers' words |
 | Default audience | The roles videos are for (a video names its audience only when it differs) |
 | Belief | The one idea every video supports, or "not yet" |
@@ -243,6 +243,39 @@ and the late packaging step finishes it. Template: `templates/packaging.md`.
 | `outline.md` | research-and-outline |
 | `script.md`, `script.generated.md` | script-writing |
 | `script-rounds/NN-speaker.md`, `script-rounds/NN-claude.md` | script-writing (NN = round, from `01`) |
+| `said.md` (optional) | the human: the words of the final cut, when the video wasn't read word for word from `script.md` |
+| `microcontent/` | atomize-extract, atomize-create |
+
+## Micro content files (atomize)
+
+atomize-extract and atomize-create turn a finished video into LinkedIn posts and a newsletter article for several accounts. They read the profile and the framework above, plus the files below. Their keys go in a `## Atomize` section of `videopowers.md`; a key with no line falls back to the file of that name at the top of the workspace.
+
+```markdown
+## Atomize
+- accounts: accounts.md
+- company voice: voice-writing.md        # the company's writing voice
+- product facts: product-facts.md        # optional: what each product does, for the writers' fact check
+- brand: brand/
+- personas: profile.md                   # a ## Personas section (one marked main), else ## Default audience
+- findings: findings.csv                 # records, written only by the kit
+- posts: posts.csv
+- scoring notes: scoring-notes.md        # what each stage has learned; created empty
+- matching rules: matching-notes.md
+- quality bar: quality-bar-notes.md
+- atomize feedback log: atomize-feedback-log.md
+```
+
+| File | Holds | Made by |
+|---|---|---|
+| `accounts.md` | `## Accounts` table (id, name, role, voice), `## Settings` (posts per profile, article author), one section per account with standing facts and rules. Template: `atomize-extract/templates/accounts.md` | setup, the human |
+| voice files | How posts sound; fenced `banned-words`, `banned-chars` and `allowed-numbers` blocks the checks read; `## Liked posts` the reviewer compares against. One company voice; a person may have their own file. Template: `atomize-extract/templates/voice-writing.md` | setup, the human |
+| `brand/brand.json` | name, logo file, font, colours (`primary`, `accent`; shades are worked out from them), themes (`light`, `dark`). Template: `atomize-extract/templates/brand.json` | created with defaults on first run |
+| `brand/` extras (optional) | `brand.css` (`@font-face` for the font, colour overrides), the logo file, `scribble.png` (the pen underline), `hero-bg.svg` (background art) | the human |
+| records and notes | `findings.csv`, `posts.csv`, the three notes files, the feedback log | the kit, on first run |
+
+The visuals use only the brand folder: with nothing in it they render in a neutral style. A font named in `brand.json` must be loadable (an `@font-face` in `brand.css`, or installed), or rendering stops with an error.
+
+**Micro content setup.** On its first run atomize-extract checks these files. When `accounts.md` or the company voice is missing, it offers to write them from the templates. It asks who posts (name, one-line role, own voice or the company's), how many posts each account takes per video, who publishes the article, the words and characters never to use, and two or three past posts the team liked. Facts are never guessed; an open question gets `waiting: <the question>`.
 
 ## Setup
 

@@ -6,6 +6,11 @@ Built from: <sources>, <YYYY-MM-DD>
 <One sentence: what the company does, for whom.>
 
 ## Products
+```products
+<product id>
+none
+```
+
 - <Product>: <one sentence>
 
 ## Niche

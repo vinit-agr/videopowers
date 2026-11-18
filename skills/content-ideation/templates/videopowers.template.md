@@ -13,6 +13,12 @@
 - plans: plans/
 - videos: videos/
 
+## Atomize
+<!-- Only for micro content (atomize-extract, atomize-create). Missing keys fall back to these file names. -->
+- accounts: accounts.md
+- company voice: voice-writing.md
+- brand: brand/
+
 ## Defaults
 - default speaker: <name>
 - cadence: <e.g. 1 a week>

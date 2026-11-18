@@ -1,0 +1,11 @@
+<div class="inner center">
+  <span class="kicker" data-slot="kicker">{{kicker}}</span>
+  <h2 data-slot="headline">{{headline}}</h2>
+  <div class="cmp">
+    <div class="panel side lo"><div class="label" data-slot="left_label">{{left_label}}</div><div class="val" data-slot="left_value">{{left_value}}</div></div>
+    <div class="vs">{{between}}</div>
+    <div class="panel side hi"><div class="label" data-slot="right_label">{{right_label}}</div><div class="val" data-slot="right_value">{{right_value}}</div></div>
+  </div>
+  {{#body}}<p class="body" data-slot="body">{{body}}</p>{{/body}}
+  {{#note}}<p class="note" data-slot="note">{{note}}</p>{{/note}}
+</div>

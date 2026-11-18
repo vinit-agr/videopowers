@@ -1,0 +1,7 @@
+{
+  "name": "<Company>",
+  "logo": "",
+  "font": "",
+  "colours": {"primary": "#2f5bd3", "accent": "#1f9d63"},
+  "themes": ["light", "dark"]
+}

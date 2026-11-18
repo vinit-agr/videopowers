@@ -13,9 +13,16 @@ pipeline so it can be repeated video after video.
 ```
 ideation ─► research + outline ─► script ─► record ─► rough cut ─► FINAL CUT (you, in Resolve) ─► packaging (late)
 (+ packaging v1)  (gate 1: Approved)  (gate 2: Locked)                     │
-                         render ◄─ polish ◄─ visuals ◄─ layout ◄─ setup ◄──┘
-                                   (motion graphics, in Remotion)
+                         render ◄─ polish ◄─ visuals ◄─ layout ◄─ setup ◄──┤
+                                   (motion graphics, in Remotion)          │
+                                                                           └─► atomize-extract ─► atomize-create
+                                                                               (micro content: LinkedIn posts + a newsletter article)
 ```
+
+The micro content branch starts at the final cut, in parallel with the motion
+graphics: it needs only what was said and the research, not the graphics. The
+posts are ready when the video goes live; the video's link is added afterwards
+with one command.
 
 ## Skills
 
@@ -33,6 +40,8 @@ ideation ─► research + outline ─► script ─► record ─► rough cut 
 | `mg-visuals` | motion graphics | placeholders → real graphics, chapter by chapter, per the design system | planned |
 | `mg-polish` | motion graphics | tightening + sound effects, in Remotion | planned |
 | `mg-render` | delivery | machine-aware parallel chunk render with retry/recover, 4K stitch | planned |
+| `atomize-extract` | micro content | finished video → scored post ideas (3 per account plus backups), one review page, then infographic and carousel visuals in the company's brand, plus a newsletter article plan; stops for review after the ideas and after the visuals | **built** |
+| `atomize-create` | micro content | matches each post to the account that can tell it best, writes every post in that account's voice and the article, checks them against the quality bar, and hands them over ready to post, with copy and download buttons | **built** |
 
 ### The content workspace
 
@@ -60,6 +69,26 @@ own private workspace.
   `build` (MP4, Resolve XML with yellow "Call N" markers, a review reel of the
   alternatives for each judgment call, and a report that leads with any
   🔒 line never said). Natural pauses are kept; only dead air is shortened.
+
+### Micro content: two stages, two stops
+
+- **`atomize-extract`** reads the video's words (`script.md`, or `said.md` for
+  the words of the final cut) and its research, scores 20 to 24 candidate
+  ideas, checks them against what the accounts posted recently, and writes
+  one card per idea. It stops so you can review the ideas on one page, then
+  makes the visuals (infographics and carousels, rendered from HTML in
+  headless Chrome) and stops again so you can check them.
+- **`atomize-create`** scores each post's fit for each account, picks the
+  best allocation with a small solver, has one writer agent per account
+  write in that account's voice, and one reviewer check every post and the
+  article. The review page then shows each post with copy and download
+  buttons.
+- Scripts check what judgment shouldn't have to: every number traces to a
+  word-for-word excerpt, banned words and characters, links only in the
+  first comment, look-alike visuals. The accounts, voices, brand and records
+  live in the content workspace (`skills/content-ideation/references/workspace.md`,
+  *Micro content files*). Needs Python 3.10+ with `pyyaml` and `pillow`, and
+  Google Chrome or Chromium.
 
 The final cut is deliberately **not** a skill — pacing decisions belong to a
 human in the edit bay.

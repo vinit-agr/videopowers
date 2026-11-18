@@ -1,0 +1,27 @@
+{
+  "statuses": [
+    "extracted",
+    "backup",
+    "made",
+    "matched",
+    "written",
+    "ready",
+    "waiting-for-link",
+    "extra",
+    "dropped",
+    "test",
+    "handed-over",
+    "scheduled",
+    "posted"
+  ],
+  "idea_types": [
+    "surprising number",
+    "myth vs evidence",
+    "real quote or story",
+    "how-to",
+    "objection",
+    "comparison",
+    "who-it's-not-for",
+    "opinion"
+  ]
+}

@@ -7,3 +7,4 @@ out/
 .venv/
 skills/*/vendor/
 skills/*/.cache/
+__pycache__/

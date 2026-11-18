@@ -1,0 +1,7 @@
+<div class="inner center">
+  <h2 data-slot="headline">{{headline}}</h2>
+  {{?bars}}<div class="panel bars">{{#bars}}<div class="row {{.tone}}"><span class="k" data-slot="bars.label">{{.label}}</span><div class="bar"><i style="width:{{.pct}}%"></i></div><span class="v" data-slot="bars.value">{{.value}}</span></div>{{/bars}}</div>{{/?bars}}
+  {{?rows}}<div class="panel ba">{{#rows}}<div class="baRow"><span class="k" data-slot="rows.label">{{.label}}</span><span class="was" data-slot="rows.before">{{.before}}</span><span class="arrow">&rarr;</span><span class="now" data-slot="rows.after">{{.after}}</span></div>{{/rows}}</div>{{/?rows}}
+  {{?items}}<div class="steps">{{#items}}<div class="panel step"><span class="n">{{.n}}</span><div><h3 data-slot="items.title">{{.title}}</h3>{{#.text}}<p data-slot="items.text">{{.text}}</p>{{/.text}}</div></div>{{/items}}</div>{{/?items}}
+  {{#note}}<p class="note" data-slot="note">{{note}}</p>{{/note}}
+</div>

@@ -11,8 +11,8 @@
     {
       "name": "videopowers",
       "source": "./",
-      "description": "A factory for making YouTube videos with Claude Code: skills for scripting, packaging, rough-cutting camera footage, and building motion graphics in Remotion.",
-      "version": "0.8.1"
+      "description": "A factory for making YouTube videos with Claude Code: skills for scripting, packaging, rough-cutting camera footage, building motion graphics in Remotion, and turning each video into LinkedIn micro content.",
+      "version": "0.10.0"
     }
   ]
 }

@@ -1,0 +1,144 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{title}}</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* One phone-width column: each post is a slip with its visual, its text and its buttons. */
+:root {
+  --brand: {{brand}};
+  --bg: #f6f5f8; --surface: #ffffff; --ink: #24212a; --muted: #6b6674; --line: #e3e0e8;
+  --accent: var(--brand); --accent-soft: color-mix(in srgb, var(--brand) 12%, white);
+  --flag: #b4483f; --flag-soft: #fbecea; --ok: #2f7d4f; --ok-soft: #e6f4ec;
+  --f-display: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #161419; --surface: #211e26; --ink: #ece9f1; --muted: #a59fae; --line: #38333f;
+  --accent: color-mix(in srgb, var(--brand) 55%, white); --accent-soft: color-mix(in srgb, var(--brand) 30%, #161419);
+  --flag: #f0a39b; --flag-soft: #3c2221; --ok: #8fd3aa; --ok-soft: #1f3328; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #161419; --surface: #211e26; --ink: #ece9f1; --muted: #a59fae; --line: #38333f;
+  --accent: color-mix(in srgb, var(--brand) 55%, white); --accent-soft: color-mix(in srgb, var(--brand) 30%, #161419);
+  --flag: #f0a39b; --flag-soft: #3c2221; --ok: #8fd3aa; --ok-soft: #1f3328; color-scheme: dark }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.5 var(--f-body); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 680px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 48px; }
+h1 { font: 700 1.5rem/1.2 var(--f-display); margin: 0 0 6px; text-wrap: balance; }
+h2 { font: 650 1.15rem/1.3 var(--f-display); margin: 0; color: var(--accent); }
+.lede { margin: 0 0 4px; color: var(--muted); }
+.howto { margin: 14px 0 0; padding: 12px 14px; background: var(--accent-soft); border-radius: 10px; font-size: 0.98rem; }
+code { font-family: ui-monospace, monospace; font-size: 0.9em; }
+nav.jump { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); margin: 16px 0 0; padding: 10px 0; border-bottom: 1px solid var(--line); display: flex; gap: 8px; overflow-x: auto; }
+nav.jump a { flex: none; font: 600 0.85rem var(--f-display); color: var(--accent); text-decoration: none; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+a:focus-visible, summary:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+section { margin-top: 28px; display: grid; gap: 12px; scroll-margin-top: 64px; }
+.sec-note { margin: -6px 0 0; color: var(--muted); font-size: 0.95rem; }
+.idea, .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; min-width: 0; scroll-margin-top: 64px; }
+.idea-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pid { font: 700 1.35rem/1 var(--f-display); color: var(--accent); }
+.pid.sm { font-size: 0.95rem; min-width: 2.6em; }
+.fmt { font: 600 0.72rem var(--f-display); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: 3px 7px; }
+.who { font: 600 0.85rem var(--f-display); color: var(--accent); }
+.score { margin-left: auto; font: 700 1.2rem/1 var(--f-display); font-variant-numeric: tabular-nums; }
+.score small { font-size: 0.7rem; color: var(--muted); font-weight: 500; }
+.hook { margin: 10px 0 8px; font: 600 1.08rem/1.4 var(--f-display); white-space: pre-line; }
+.tags { margin: 0; color: var(--muted); font-size: 0.92rem; }
+.bars { margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 6px; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.bars span { background: var(--accent-soft); border-radius: 6px; padding: 2px 8px; }
+.flag { margin: 10px 0 0; padding: 6px 10px; border-radius: 8px; background: var(--flag-soft); color: var(--flag); font-size: 0.88rem; font-weight: 600; }
+.strip { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 4px 0 8px; padding-bottom: 6px; }
+.strip img { flex: none; width: 82%; max-width: 420px; height: auto; border-radius: 8px; border: 1px solid var(--line); scroll-snap-align: start; background: var(--surface); }
+.strip.one img { width: 100%; }
+.card .strip img { width: 92%; max-width: 560px; }
+.count { margin: 0 0 6px; font-size: 0.82rem; color: var(--muted); }
+.post { margin-top: 10px; padding: 12px; background: var(--bg); border-radius: 10px; border: 1px solid var(--line); }
+.post-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.post-top.sub { margin-top: 12px; }
+.post-h { margin: 0; font: 600 0.78rem var(--f-display); text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.caption { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 1rem; }
+.caption.dt { font-weight: 600; }
+.caption.fc { color: var(--muted); font-size: 0.92rem; }
+.rv { text-transform: none; letter-spacing: 0; font-weight: 600; border-radius: 999px; padding: 1px 8px; background: var(--ok-soft); color: var(--ok); }
+.rv-fail { background: var(--flag-soft); color: var(--flag); }
+.btn { font: 600 0.82rem var(--f-display); color: var(--accent); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; cursor: pointer; flex: none; text-decoration: none; display: inline-block; }
+.btn:hover { border-color: var(--accent); }
+.btn.done { background: var(--accent-soft); }
+.btn:disabled { opacity: 0.6; cursor: default; }
+.dl-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 4px 0 8px; }
+.dl-status { font-size: 0.85rem; color: var(--muted); }
+details { margin-top: 10px; }
+summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 0.95rem; padding: 4px 0; }
+dl { margin: 6px 0 0; }
+dt { margin-top: 10px; font: 600 0.72rem var(--f-display); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+dd { margin: 2px 0 0; white-space: pre-line; }
+.card h3 { font: 600 0.75rem var(--f-display); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 14px 0 4px; }
+.card h3:first-child { margin-top: 0; }
+.card ol { margin: 0; padding-left: 22px; display: grid; gap: 4px; }
+.secs { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.secs li { border-left: 3px solid var(--line); padding-left: 12px; }
+.sec-h { margin: 0; font-weight: 600; }
+.fig { font: 600 0.72rem var(--f-display); color: var(--accent); background: var(--accent-soft); border-radius: 6px; padding: 1px 6px; margin-left: 4px; }
+.sec-p, .sec-b { margin: 2px 0 0; color: var(--muted); font-size: 0.95rem; }
+.article-body { overflow-wrap: anywhere; }
+.article-body h1 { font: 700 1.3rem/1.25 var(--f-display); text-wrap: balance; }
+.article-body h2 { font-size: 1.05rem; color: var(--ink); margin: 18px 0 6px; }
+.article-body p { margin: 0 0 10px; }
+.article-body img { max-width: 100%; height: auto; }
+.np { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.np li { display: flex; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.np li > div { min-width: 0; }
+.np-idea { margin: 0; }
+.np-why { margin: 2px 0 0; color: var(--muted); font-size: 0.9rem; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+<div class="wrap">
+<h1>{{title}}</h1>
+<p class="lede">{{summary}}</p>
+<p class="lede">{{formats}}</p>
+<p class="howto">{{howto}}</p>
+<nav class="jump" aria-label="Jump to">{{nav}}</nav>
+{{sections}}
+</div>
+<script>
+(function () {
+  function flash(btn, text) { var o = btn.dataset.label || btn.textContent; btn.dataset.label = o; btn.textContent = text; btn.classList.add("done"); setTimeout(function () { btn.textContent = o; btn.classList.remove("done"); }, 1600); }
+  function selectText(el) { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+  document.querySelectorAll(".btn.copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var box = btn.closest(".post-top").nextElementSibling;
+      var p = navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(box.textContent) : Promise.reject();
+      p.then(function () { flash(btn, "Copied"); }, function () { selectText(box); flash(btn, "Selected, copy it"); });
+    });
+  });
+  // Downloads: plain links work when the page is opened from disk; inside a published page, the save goes through the viewer.
+  function note(row, t) { row.querySelector(".dl-status").textContent = t; }
+  function start(downloads) {
+    document.querySelectorAll(".dl-row").forEach(function (row) {
+      var links = row.querySelectorAll("a.btn"), btn = row.querySelector("button.dl");
+      if (!btn) return;
+      links.forEach(function (a) { a.hidden = true; });
+      btn.hidden = false;
+      btn.addEventListener("click", async function () {
+        var files = JSON.parse(btn.dataset.files), saved = 0; btn.disabled = true;
+        for (var i = 0; i < files.length; i++) {
+          note(row, files.length > 1 ? "Getting " + (i + 1) + " of " + files.length + "..." : "Getting the file...");
+          try {
+            var res = await fetch(files[i].url); if (!res.ok) throw { code: "fetch" };
+            var blob = await res.blob();
+            note(row, files.length > 1 ? "Confirm " + (i + 1) + " of " + files.length : "Confirm the save");
+            await downloads.save({ filename: files[i].name, data: blob }); saved++;
+          } catch (err) {
+            var c = err && err.code;
+            note(row, c === "declined" ? "Stopped. Saved " + saved + " of " + files.length + "." : c === "rate_limited" ? "Another save is open. Try again in a moment." : c === "fetch" ? "Couldn't load the file. Reload and try again." : "Saving isn't available here.");
+            btn.disabled = false; return;
+          }
+        }
+        note(row, files.length > 1 ? "Saved all " + files.length + "." : "Saved."); btn.disabled = false;
+      });
+    });
+  }
+  if (window.claude && window.claude.use) { window.claude.use("downloads").then(function (d) { if (d) start(d); }, function () {}); }
+})();
+</script>

@@ -1,0 +1,7 @@
+<div class="inner center">
+  <span class="kicker" data-slot="kicker">{{kicker}}</span>
+  <h2 data-slot="headline">{{headline}}</h2>
+  <div class="panel check">
+    {{#items}}<div class="ci {{.mark}}" data-slot="items.text"><span class="mk"></span>{{.text}}</div>{{/items}}
+  </div>
+</div>
